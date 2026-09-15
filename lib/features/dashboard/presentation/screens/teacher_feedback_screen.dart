@@ -156,7 +156,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
               InkWell(
                 key: const Key('teacher_feedback_notifications_button'),
                 onTap: () {
-                  context.push(AppRoutePaths.notifications);
+                  context.go(AppRoutePaths.notifications);
                 },
                 borderRadius: BorderRadius.circular(9999),
                 child: Container(

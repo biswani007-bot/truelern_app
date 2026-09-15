@@ -137,14 +137,18 @@ final routerNotifierProvider = Provider<RouterNotifier>((ref) {
 });
 
 /// Global root navigator key for full-screen routes outside the persistent shell
-final rootNavigatorKey = GlobalKey<NavigatorState>();
+final rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'rootNav');
+final dashboardNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'dashboardNav');
+final classesNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'classesNav');
+final assignmentsNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'assignmentsNav');
+final profileNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'profileNav');
 
 /// Global provider for application [GoRouter].
 ///
 /// Uses StatefulShellRoute for the Parent Shell to support persistent
 /// bottom navigation with independent branch navigation stacks.
 final routerProvider = Provider<GoRouter>((ref) {
-  final notifier = ref.watch(routerNotifierProvider);
+  final notifier = ref.read(routerNotifierProvider);
 
   return GoRouter(
     navigatorKey: rootNavigatorKey,
@@ -153,11 +157,16 @@ final routerProvider = Provider<GoRouter>((ref) {
     redirect: notifier.redirect,
     debugLogDiagnostics: false,
     routes: [
-      // 0. Root Route (Maps to SplashScreen for app startup)
+      // 0. Root Route (Clean redirect to splash on startup)
       GoRoute(
         path: AppRoutePaths.root,
-        name: AppRouteNames.root,
-        builder: (context, state) => const SplashScreen(),
+        redirect: (context, state) => AppRoutePaths.splash,
+      ),
+
+      // 0b. Parent Base Route (Clean redirect to parent dashboard)
+      GoRoute(
+        path: AppRoutePaths.parent,
+        redirect: (context, state) => AppRoutePaths.parentDashboard,
       ),
 
       // 1. Splash / Bootstrap Route
@@ -189,12 +198,14 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       // 3. Parent Experience Shell (StatefulShellRoute for persistent bottom nav)
       StatefulShellRoute.indexedStack(
+        parentNavigatorKey: rootNavigatorKey,
         builder: (context, state, navigationShell) {
           return ParentShellScreen(navigationShell: navigationShell);
         },
         branches: [
           // Branch 0: Dashboard Tab
           StatefulShellBranch(
+            navigatorKey: dashboardNavigatorKey,
             routes: [
               GoRoute(
                 path: AppRoutePaths.parentDashboard,
@@ -206,6 +217,7 @@ final routerProvider = Provider<GoRouter>((ref) {
 
           // Branch 1: Classes Tab (SCR-13 Class Schedule & SCR-14 Class Details)
           StatefulShellBranch(
+            navigatorKey: classesNavigatorKey,
             routes: [
               GoRoute(
                 path: AppRoutePaths.parentClasses,
@@ -297,6 +309,7 @@ final routerProvider = Provider<GoRouter>((ref) {
 
           // Branch 2: Assignments Tab [IMPLEMENTED]
           StatefulShellBranch(
+            navigatorKey: assignmentsNavigatorKey,
             routes: [
               GoRoute(
                 path: AppRoutePaths.parentAssignments,
@@ -339,6 +352,7 @@ final routerProvider = Provider<GoRouter>((ref) {
 
           // Branch 3: Profile Tab (Figma Node 76:1711)
           StatefulShellBranch(
+            navigatorKey: profileNavigatorKey,
             routes: [
               GoRoute(
                 path: AppRoutePaths.parentProfile,
@@ -359,73 +373,61 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutePaths.parentInvoices,
         name: AppRouteNames.parentInvoices,
-        parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const ParentInvoicesScreen(),
       ),
       GoRoute(
         path: AppRoutePaths.paymentSuccessful,
         name: AppRouteNames.paymentSuccessful,
-        parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const ParentPaymentSuccessfulScreen(),
       ),
       GoRoute(
         path: AppRoutePaths.invoiceDetails,
         name: AppRouteNames.invoiceDetails,
-        parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const ParentInvoiceDetailScreen(),
       ),
       GoRoute(
         path: AppRoutePaths.parentSecurityPrivacy,
         name: AppRouteNames.parentSecurityPrivacy,
-        parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const ParentSecurityPrivacyScreen(),
       ),
       GoRoute(
         path: AppRoutePaths.parentLoginMethods,
         name: AppRouteNames.parentLoginMethods,
-        parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const ParentLoginMethodsScreen(),
       ),
       GoRoute(
         path: AppRoutePaths.parentLoginDevices,
         name: AppRouteNames.parentLoginDevices,
-        parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const ParentLoginDevicesScreen(),
       ),
       GoRoute(
         path: AppRoutePaths.parentMessages,
         name: AppRouteNames.parentMessages,
-        parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const ParentMessagesScreen(),
       ),
       GoRoute(
         path: AppRoutePaths.notifications,
         name: AppRouteNames.notifications,
-        parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const ParentNotificationsScreen(),
       ),
       GoRoute(
         path: AppRoutePaths.accountSettings,
         name: AppRouteNames.accountSettings,
-        parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const ParentAccountSettingsScreen(),
       ),
       GoRoute(
         path: AppRoutePaths.achievements,
         name: AppRouteNames.achievements,
-        parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const ParentAchievementsScreen(),
       ),
       GoRoute(
         path: AppRoutePaths.learningProgress,
         name: AppRouteNames.learningProgress,
-        parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const ParentLearningProgressScreen(),
       ),
       GoRoute(
         path: AppRoutePaths.teacherFeedback,
         name: AppRouteNames.teacherFeedback,
-        parentNavigatorKey: rootNavigatorKey,
         builder: (context, state) => const TeacherFeedbackScreen(),
       ),
     ],

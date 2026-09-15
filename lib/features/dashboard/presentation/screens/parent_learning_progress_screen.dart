@@ -172,7 +172,7 @@ class _ParentLearningProgressScreenState
               InkWell(
                 key: const Key('learning_progress_bell_button'),
                 borderRadius: BorderRadius.circular(9999),
-                onTap: () => context.push(AppRoutePaths.notifications),
+                onTap: () => context.go(AppRoutePaths.notifications),
                 child: SizedBox(
                   width: 40,
                   height: 40,

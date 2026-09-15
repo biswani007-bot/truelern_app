@@ -44,7 +44,7 @@ class BentoSnapshotGrid extends StatelessWidget {
                 value: dashboard.attendanceRate != null
                     ? '${dashboard.attendanceRate!.round()}%'
                     : '72%',
-                onTap: () => context.push(AppRoutePaths.learningProgress),
+                onTap: () => context.go(AppRoutePaths.learningProgress),
                 footer: ClipRRect(
                   borderRadius: BorderRadius.circular(9999),
                   child: LinearProgressIndicator(

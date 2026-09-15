@@ -208,7 +208,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
               // Button - Notifications (Node 76:1221)
               InkWell(
                 key: const Key('messages_notification_button'),
-                onTap: () => context.push(AppRoutePaths.notifications),
+                onTap: () => context.go(AppRoutePaths.notifications),
                 borderRadius: BorderRadius.circular(9999),
                 child: SizedBox(
                   width: 40,

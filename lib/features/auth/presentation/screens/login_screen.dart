@@ -53,7 +53,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
     if (success) {
       try {
-        context.go(AppRoutePaths.parent);
+        context.go(AppRoutePaths.parentDashboard);
       } catch (_) {
         // In isolated widget tests without GoRouter, state update suffices
       }

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,6 +20,8 @@ class SplashScreen extends ConsumerStatefulWidget {
 }
 
 class _SplashScreenState extends ConsumerState<SplashScreen> {
+  Timer? _timer;
+
   @override
   void initState() {
     super.initState();
@@ -27,19 +30,25 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     });
   }
 
-  Future<void> _bootstrap() async {
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _bootstrap() {
     // Artificial smooth delay for splash screen display (pure static frontend)
-    await Future<void>.delayed(const Duration(milliseconds: 2500));
+    _timer = Timer(const Duration(milliseconds: 2500), () {
+      if (!mounted) return;
 
-    if (!mounted) return;
-
-    // Pure frontend routing based on local auth state without any network/backend calls
-    final authState = ref.read(authControllerProvider);
-    if (authState is Authenticated) {
-      context.go(AppRoutePaths.parent);
-    } else {
-      context.go(AppRoutePaths.onboarding);
-    }
+      // Pure frontend routing based on local auth state without any network/backend calls
+      final authState = ref.read(authControllerProvider);
+      if (authState is Authenticated) {
+        context.go(AppRoutePaths.parentDashboard);
+      } else {
+        context.go(AppRoutePaths.onboarding);
+      }
+    });
   }
 
   @override

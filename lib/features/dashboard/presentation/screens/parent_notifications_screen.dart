@@ -643,7 +643,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                 // Action Button: View Feedback (Node 76:1434)
                 InkWell(
                   onTap: () {
-                    context.push(AppRoutePaths.teacherFeedback);
+                    context.go(AppRoutePaths.teacherFeedback);
                   },
                   borderRadius: BorderRadius.circular(8),
                   child: Container(

@@ -123,10 +123,10 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
           InkWell(
             borderRadius: BorderRadius.circular(9999),
             onTap: () {
-              if (Navigator.of(context).canPop()) {
-                Navigator.of(context).pop();
-              } else {
+              if (context.canPop()) {
                 context.pop();
+              } else {
+                context.go(AppRoutePaths.parentProfile);
               }
             },
             child: Container(

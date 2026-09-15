@@ -203,7 +203,7 @@ class _ParentDashboardScreenState
               color: Color(0xFF1E4ED8),
               size: 24,
             ),
-            onPressed: () => context.push(AppRoutePaths.notifications),
+            onPressed: () => context.go(AppRoutePaths.notifications),
             tooltip: 'Notifications',
           ),
         ],

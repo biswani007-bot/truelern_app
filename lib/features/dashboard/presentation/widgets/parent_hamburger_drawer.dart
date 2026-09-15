@@ -218,7 +218,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       isActive: activeItem == 'My Programs',
                       onTap: () {
                         Navigator.of(context).pop();
-                        context.push(AppRoutePaths.currentProgram);
+                        context.go(AppRoutePaths.currentProgram);
                       },
                     ),
                     _buildMenuItem(
@@ -230,7 +230,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       isActive: activeItem == 'Learning Progress', // Default active in Figma
                       onTap: () {
                         Navigator.of(context).pop();
-                        context.push(AppRoutePaths.learningProgress);
+                        context.go(AppRoutePaths.learningProgress);
                       },
                     ),
 
@@ -248,7 +248,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).pop();
                         if (activeItem != 'Achievements') {
-                          context.push(AppRoutePaths.achievements);
+                          context.go(AppRoutePaths.achievements);
                         }
                       },
                     ),
@@ -278,7 +278,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).pop();
                         if (activeItem != 'Messages') {
-                          context.push(AppRoutePaths.parentMessages);
+                          context.go(AppRoutePaths.parentMessages);
                         }
                       },
                     ),
@@ -292,7 +292,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).pop();
                         if (activeItem != 'Notifications') {
-                          context.push(AppRoutePaths.notifications);
+                          context.go(AppRoutePaths.notifications);
                         }
                       },
                     ),
@@ -306,7 +306,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).pop();
                         if (activeItem != 'Teacher Updates') {
-                          context.push(AppRoutePaths.teacherFeedback);
+                          context.go(AppRoutePaths.teacherFeedback);
                         }
                       },
                     ),
@@ -336,7 +336,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       isActive: activeItem == 'Account Settings',
                       onTap: () {
                         Navigator.of(context).pop();
-                        context.push(AppRoutePaths.accountSettings);
+                        context.go(AppRoutePaths.accountSettings);
                       },
                     ),
                     _buildMenuItem(
@@ -348,7 +348,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       isActive: activeItem == 'Security & Privacy',
                       onTap: () {
                         Navigator.of(context).pop();
-                        context.push(AppRoutePaths.parentSecurityPrivacy);
+                        context.go(AppRoutePaths.parentSecurityPrivacy);
                       },
                     ),
                   ],

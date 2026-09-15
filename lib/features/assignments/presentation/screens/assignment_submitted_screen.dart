@@ -462,8 +462,9 @@ class AssignmentSubmittedScreen extends StatelessWidget {
             onTap: () {
               if (context.canPop()) {
                 context.pop();
+              } else {
+                context.go('/parent/classes');
               }
-              context.go('/parent/classes');
             },
             borderRadius: BorderRadius.circular(4),
             child: Padding(
