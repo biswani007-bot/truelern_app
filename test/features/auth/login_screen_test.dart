@@ -1,0 +1,229 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:truelearn/core/error/failures.dart';
+import 'package:truelearn/features/auth/data/models/auth_response.dart';
+import 'package:truelearn/features/auth/data/models/login_request.dart';
+import 'package:truelearn/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:truelearn/features/auth/domain/repositories/auth_repository.dart';
+import 'package:truelearn/features/auth/presentation/screens/login_screen.dart';
+
+class FakeAuthRepository implements AuthRepository {
+  Failure? failureToThrow;
+  bool loginCalled = false;
+
+  @override
+  Future<String?> checkPersistedSession() async => null;
+
+  @override
+  Future<AuthResponse> login(LoginRequest request) async {
+    loginCalled = true;
+    if (failureToThrow != null) {
+      throw failureToThrow!;
+    }
+    return const AuthResponse(
+      accessToken: 'test_token',
+      user: UserDto(id: '1', name: 'Test', email: 'test@truelern.com'),
+    );
+  }
+
+  @override
+  Future<void> logout() async {}
+}
+
+void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+  GoogleFonts.config.allowRuntimeFetching = false;
+
+  late FakeAuthRepository fakeRepo;
+
+  setUp(() {
+    fakeRepo = FakeAuthRepository();
+  });
+
+  Widget createLoginApp() {
+    return ProviderScope(
+      overrides: [
+        authRepositoryProvider.overrideWithValue(fakeRepo),
+      ],
+      child: const MaterialApp(
+        home: LoginScreen(),
+      ),
+    );
+  }
+
+  group('LoginScreen Hardening & Widget Tests', () {
+    testWidgets('renders all Figma elements: title, inputs, button, footer',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(createLoginApp());
+      await tester.pump();
+
+      // Heading and subtitle (Figma 71:232)
+      expect(find.text('Welcome'), findsOneWidget);
+      expect(
+        find.text('Sign in to continue your learning\njourney.'),
+        findsOneWidget,
+      );
+
+      // WhatsApp / Email field
+      expect(find.text('WhatsApp Number or Email'), findsOneWidget);
+      expect(find.byType(TextFormField), findsNWidgets(2));
+
+      // Password field
+      expect(find.text('Password'), findsOneWidget);
+
+      // Continue Button
+      expect(find.widgetWithText(ElevatedButton, 'Continue'), findsOneWidget);
+
+      // Social Auth buttons
+      expect(find.text('Sign in with Google'), findsOneWidget);
+      expect(find.text('Sign in with Microsoft'), findsOneWidget);
+      expect(find.text('Create Account'), findsNothing);
+    });
+
+    testWidgets('CASE 3: shows validation errors when submitting empty form and does not call API',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(createLoginApp());
+      await tester.pump();
+
+      // Tap Continue without filling fields
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Continue'));
+      await tester.pump();
+
+      // Validation errors
+      expect(find.text('Please enter your email address.'), findsOneWidget);
+      expect(find.text('Please enter your password.'), findsOneWidget);
+      expect(fakeRepo.loginCalled, isFalse);
+    });
+
+    testWidgets('CASE 3: shows format validation error for invalid email and short password',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(createLoginApp());
+      await tester.pump();
+
+      // Enter invalid email
+      final fields = find.byType(TextFormField);
+      await tester.enterText(fields.at(0), 'invalid-email-format');
+      await tester.enterText(fields.at(1), '123'); // short password
+
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Continue'));
+      await tester.pump();
+
+      expect(find.text('Please enter a valid email address.'), findsOneWidget);
+      expect(find.text('Password must be at least 6 characters.'), findsOneWidget);
+      expect(fakeRepo.loginCalled, isFalse);
+    });
+
+    testWidgets('CASE 5: displays server error banner on HTTP 500 failure and permits retry',
+        (WidgetTester tester) async {
+      fakeRepo.failureToThrow = const ServerFailure(
+        'Internal server error occurred (HTTP 500). Please retry.',
+        statusCode: 500,
+      );
+
+      await tester.pumpWidget(createLoginApp());
+      await tester.pump();
+
+      // Fill in valid inputs
+      final fields = find.byType(TextFormField);
+      await tester.enterText(fields.at(0), 'parent@truelern.com');
+      await tester.enterText(fields.at(1), 'password123');
+
+      // Submit
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Continue'));
+      await tester.pump(); // Start submitting
+      await tester.pump(); // Finish future and state transition
+
+      // Verify repo was invoked
+      expect(fakeRepo.loginCalled, isTrue);
+
+      // Verify user remains on Login screen and error banner is displayed
+      expect(find.byType(LoginScreen), findsOneWidget);
+      expect(
+        find.text('Internal server error occurred (HTTP 500). Please retry.'),
+        findsOneWidget,
+      );
+      // User can still see the button and retry
+      expect(find.widgetWithText(ElevatedButton, 'Continue'), findsOneWidget);
+    });
+
+    testWidgets('CASE 6: displays authentication failure banner on HTTP 401',
+        (WidgetTester tester) async {
+      fakeRepo.failureToThrow = const AuthFailure(
+        'Invalid email or password. Please verify your credentials.',
+        401,
+      );
+
+      await tester.pumpWidget(createLoginApp());
+      await tester.pump();
+
+      final fields = find.byType(TextFormField);
+      await tester.enterText(fields.at(0), 'parent@truelern.com');
+      await tester.enterText(fields.at(1), 'wrong_pass');
+
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Continue'));
+      await tester.pump();
+      await tester.pump();
+
+      expect(find.byType(LoginScreen), findsOneWidget);
+      expect(
+        find.text('Invalid email or password. Please verify your credentials.'),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets('CASE 7: displays network failure banner on connection drop',
+        (WidgetTester tester) async {
+      fakeRepo.failureToThrow = const NetworkFailure(
+        'Unable to connect to server. Please verify your internet connection.',
+      );
+
+      await tester.pumpWidget(createLoginApp());
+      await tester.pump();
+
+      final fields = find.byType(TextFormField);
+      await tester.enterText(fields.at(0), 'parent@truelern.com');
+      await tester.enterText(fields.at(1), 'password123');
+
+      await tester.tap(find.widgetWithText(ElevatedButton, 'Continue'));
+      await tester.pump();
+      await tester.pump();
+
+      expect(find.byType(LoginScreen), findsOneWidget);
+      expect(
+        find.text('Unable to connect to server. Please verify your internet connection.'),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets('tapping Google button shows informative unavailable notification',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(createLoginApp());
+      await tester.pump();
+
+      await tester.tap(find.text('Sign in with Google'));
+      await tester.pump();
+
+      expect(
+        find.text('Google authentication is not configured on the backend. Please sign in with your credentials.'),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets('tapping Microsoft button shows informative unavailable notification',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(createLoginApp());
+      await tester.pump();
+
+      await tester.ensureVisible(find.text('Sign in with Microsoft'));
+      await tester.tap(find.text('Sign in with Microsoft'));
+      await tester.pump();
+
+      expect(
+        find.text('Microsoft authentication is not configured on the backend. Please sign in with your credentials.'),
+        findsOneWidget,
+      );
+    });
+  });
+}

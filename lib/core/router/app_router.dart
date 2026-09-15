@@ -1,0 +1,433 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import '../../features/assignments/presentation/screens/assignment_submission_screen.dart';
+import '../../features/assignments/presentation/screens/assignment_submitted_screen.dart';
+import '../../features/assignments/presentation/screens/assignments_screen.dart';
+import '../../features/assignments/domain/entities/assignment_entity.dart';
+import '../../features/auth/presentation/controllers/auth_controller.dart';
+import '../../features/auth/presentation/controllers/auth_state.dart';
+import '../../features/auth/presentation/screens/login_screen.dart';
+import '../../features/auth/presentation/screens/onboarding_screen.dart';
+import '../../features/auth/presentation/screens/splash_screen.dart';
+import '../../features/classes/domain/entities/class_entity.dart';
+import '../../features/classes/presentation/screens/class_details_screen.dart';
+import '../../features/classes/presentation/screens/class_preview_screen.dart';
+import '../../features/classes/presentation/screens/class_summary_screen.dart';
+import '../../features/classes/presentation/screens/current_program_screen.dart';
+import '../../features/classes/presentation/screens/topic_detail_screen.dart';
+import '../../features/classes/presentation/screens/joining_class_screen.dart';
+import '../../features/classes/presentation/screens/live_classroom_screen.dart';
+import '../../features/classes/presentation/screens/parent_classes_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_dashboard_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_profile_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_my_child_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_security_privacy_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_login_methods_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_login_devices_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_invoices_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_invoice_detail_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_payment_successful_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_messages_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_notifications_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_account_settings_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_achievements_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_learning_progress_screen.dart';
+import '../../features/dashboard/presentation/screens/parent_shell_screen.dart';
+import '../../features/dashboard/presentation/screens/teacher_feedback_screen.dart';
+import '../theme/app_colors.dart';
+import '../theme/app_typography.dart';
+import 'route_names.dart';
+
+/// Minimal placeholder for authorized-but-not-yet-implemented tabs.
+///
+/// Explicitly designated as a routing placeholder. NOT a feature screen.
+class CoreRouterPlaceholderScreen extends StatelessWidget {
+  const CoreRouterPlaceholderScreen({
+    super.key,
+    required this.title,
+    this.subtitle,
+  });
+
+  final String title;
+  final String? subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(
+                Icons.foundation_outlined,
+                size: 48,
+                color: AppColors.primary,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                title,
+                style: AppTypography.titleMedium,
+                textAlign: TextAlign.center,
+              ),
+              if (subtitle != null) ...[
+                const SizedBox(height: 8),
+                Text(
+                  subtitle!,
+                  style: AppTypography.bodySmall,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Notifier coordinating authentication state changes with [GoRouter] redirect triggers.
+class RouterNotifier extends ChangeNotifier {
+  RouterNotifier(this._ref) {
+    _ref.listen<AuthState>(
+      authControllerProvider,
+      (_, next) => notifyListeners(),
+    );
+  }
+
+  final Ref _ref;
+
+  /// Pure deterministic redirect guard enforcing TrueLern authentication boundaries.
+  String? redirect(BuildContext context, GoRouterState state) {
+    final authState = _ref.read(authControllerProvider);
+    final location = state.matchedLocation;
+    final isRoot = location == AppRoutePaths.root;
+    final isSplash = location == AppRoutePaths.splash || isRoot;
+    final isOnboarding = location == AppRoutePaths.onboarding;
+    final isLogin = location == AppRoutePaths.login;
+    final isAuthenticated = authState is Authenticated;
+
+    // 1. Splash lifecycle: allow initialization to complete uninterrupted
+    if (authState is AuthInitial || authState is AuthCheckingSession) {
+      return null;
+    }
+
+    // 2. Unauthenticated access prevention:
+    // If not authenticated and attempting to access any protected area, redirect to /login.
+    if (!isAuthenticated && !isLogin && !isSplash && !isOnboarding) {
+      return AppRoutePaths.login;
+    }
+
+    // 3. Authenticated bounce:
+    // If authenticated user is on /login or /splash or /onboarding or /, redirect to /parent shell.
+    if (isAuthenticated && (isLogin || isSplash || isOnboarding)) {
+      return AppRoutePaths.parentDashboard;
+    }
+
+    return null;
+  }
+}
+
+/// Provider exposing [RouterNotifier].
+final routerNotifierProvider = Provider<RouterNotifier>((ref) {
+  return RouterNotifier(ref);
+});
+
+/// Global root navigator key for full-screen routes outside the persistent shell
+final rootNavigatorKey = GlobalKey<NavigatorState>();
+
+/// Global provider for application [GoRouter].
+///
+/// Uses StatefulShellRoute for the Parent Shell to support persistent
+/// bottom navigation with independent branch navigation stacks.
+final routerProvider = Provider<GoRouter>((ref) {
+  final notifier = ref.watch(routerNotifierProvider);
+
+  return GoRouter(
+    navigatorKey: rootNavigatorKey,
+    initialLocation: AppRoutePaths.splash,
+    refreshListenable: notifier,
+    redirect: notifier.redirect,
+    debugLogDiagnostics: false,
+    routes: [
+      // 0. Root Route (Maps to SplashScreen for app startup)
+      GoRoute(
+        path: AppRoutePaths.root,
+        name: AppRouteNames.root,
+        builder: (context, state) => const SplashScreen(),
+      ),
+
+      // 1. Splash / Bootstrap Route
+      GoRoute(
+        path: AppRoutePaths.splash,
+        name: AppRouteNames.splash,
+        builder: (context, state) => const SplashScreen(),
+      ),
+
+      // 1b. Onboarding Pre-login Route (Nodes 71:150, 71:179, 71:208)
+      GoRoute(
+        path: AppRoutePaths.onboarding,
+        name: AppRouteNames.onboarding,
+        builder: (context, state) => const OnboardingScreen(),
+      ),
+
+      // 2. Authentication Route
+      GoRoute(
+        path: AppRoutePaths.login,
+        name: AppRouteNames.login,
+        builder: (context, state) => const LoginScreen(),
+      ),
+
+      // 2b. Parent Alias Route (redirects /parent to /parent/dashboard)
+      GoRoute(
+        path: AppRoutePaths.parent,
+        redirect: (context, state) => AppRoutePaths.parentDashboard,
+      ),
+
+      // 3. Parent Experience Shell (StatefulShellRoute for persistent bottom nav)
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) {
+          return ParentShellScreen(navigationShell: navigationShell);
+        },
+        branches: [
+          // Branch 0: Dashboard Tab
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutePaths.parentDashboard,
+                name: AppRouteNames.parentDashboard,
+                builder: (context, state) => const ParentDashboardScreen(),
+              ),
+            ],
+          ),
+
+          // Branch 1: Classes Tab (SCR-13 Class Schedule & SCR-14 Class Details)
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutePaths.parentClasses,
+                name: AppRouteNames.parentClasses,
+                builder: (context, state) => const ParentClassesScreen(),
+                routes: [
+                  // Literal 'program' route MUST come before parameterized ':classId'
+                  // to prevent GoRouter from matching 'program' as a classId.
+                  GoRoute(
+                    path: 'program',
+                    name: AppRouteNames.currentProgram,
+                    builder: (context, state) => const CurrentProgramScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'topic',
+                        name: AppRouteNames.topicDetail,
+                        builder: (context, state) => const TopicDetailScreen(),
+                      ),
+                    ],
+                  ),
+                  GoRoute(
+                    path: ':classId',
+                    name: AppRouteNames.classDetails,
+                    builder: (context, state) {
+                      final classId = state.pathParameters['classId'] ?? '';
+                      final session = state.extra is ClassEntity ? state.extra as ClassEntity : null;
+                      return ClassDetailsScreen(
+                        classId: classId,
+                        session: session,
+                      );
+                    },
+                    routes: [
+                      GoRoute(
+                        path: 'preview',
+                        name: AppRouteNames.classPreview,
+                        builder: (context, state) {
+                          final classId = state.pathParameters['classId'] ?? '';
+                          final session = state.extra is ClassEntity ? state.extra as ClassEntity : null;
+                          return ClassPreviewScreen(
+                            classId: classId,
+                            session: session,
+                          );
+                        },
+                      ),
+                      GoRoute(
+                        path: 'joining',
+                        name: AppRouteNames.joiningClass,
+                        parentNavigatorKey: rootNavigatorKey,
+                        builder: (context, state) {
+                          final classId = state.pathParameters['classId'] ?? '';
+                          final session = state.extra is ClassEntity ? state.extra as ClassEntity : null;
+                          return JoiningClassScreen(
+                            classId: classId,
+                            session: session,
+                          );
+                        },
+                      ),
+                      GoRoute(
+                        path: 'live',
+                        name: AppRouteNames.liveClassroom,
+                        parentNavigatorKey: rootNavigatorKey,
+                        builder: (context, state) {
+                          final classId = state.pathParameters['classId'] ?? '';
+                          final session = state.extra is ClassEntity ? state.extra as ClassEntity : null;
+                          return LiveClassroomScreen(
+                            classId: classId,
+                            session: session,
+                          );
+                        },
+                      ),
+                      GoRoute(
+                        path: 'summary',
+                        name: AppRouteNames.classSummary,
+                        builder: (context, state) {
+                          final classId = state.pathParameters['classId'] ?? '';
+                          final session = state.extra is ClassEntity ? state.extra as ClassEntity : null;
+                          return ClassSummaryScreen(
+                            classId: classId,
+                            session: session,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+
+          // Branch 2: Assignments Tab [IMPLEMENTED]
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutePaths.parentAssignments,
+                name: AppRouteNames.parentAssignments,
+                builder: (context, state) => const AssignmentsScreen(),
+                routes: [
+                  GoRoute(
+                    path: ':assignmentId/submission',
+                    name: AppRouteNames.assignmentSubmission,
+                    builder: (context, state) {
+                      final assignmentId = state.pathParameters['assignmentId'] ?? '';
+                      final assignment = state.extra is AssignmentEntity
+                          ? state.extra as AssignmentEntity
+                          : null;
+                      return AssignmentSubmissionScreen(
+                        assignmentId: assignmentId,
+                        assignment: assignment,
+                        showAllStatesOverview: false,
+                      );
+                    },
+                  ),
+                  GoRoute(
+                    path: ':assignmentId/submitted',
+                    name: AppRouteNames.assignmentSubmitted,
+                    builder: (context, state) {
+                      final assignmentId = state.pathParameters['assignmentId'] ?? '';
+                      final assignment = state.extra is AssignmentEntity
+                          ? state.extra as AssignmentEntity
+                          : null;
+                      return AssignmentSubmittedScreen(
+                        assignmentId: assignmentId,
+                        assignment: assignment,
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+
+          // Branch 3: Profile Tab (Figma Node 76:1711)
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutePaths.parentProfile,
+                name: AppRouteNames.parentProfile,
+                builder: (context, state) => const ParentProfileScreen(),
+              ),
+              GoRoute(
+                path: AppRoutePaths.myChildren,
+                name: AppRouteNames.myChildren,
+                builder: (context, state) => const ParentMyChildScreen(),
+              ),
+            ],
+          ),
+        ],
+      ),
+
+      // Standalone full-screen Parent routes outside bottom navigation shell (Figma Node 104:106 & 104:314)
+      GoRoute(
+        path: AppRoutePaths.parentInvoices,
+        name: AppRouteNames.parentInvoices,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const ParentInvoicesScreen(),
+      ),
+      GoRoute(
+        path: AppRoutePaths.paymentSuccessful,
+        name: AppRouteNames.paymentSuccessful,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const ParentPaymentSuccessfulScreen(),
+      ),
+      GoRoute(
+        path: AppRoutePaths.invoiceDetails,
+        name: AppRouteNames.invoiceDetails,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const ParentInvoiceDetailScreen(),
+      ),
+      GoRoute(
+        path: AppRoutePaths.parentSecurityPrivacy,
+        name: AppRouteNames.parentSecurityPrivacy,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const ParentSecurityPrivacyScreen(),
+      ),
+      GoRoute(
+        path: AppRoutePaths.parentLoginMethods,
+        name: AppRouteNames.parentLoginMethods,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const ParentLoginMethodsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutePaths.parentLoginDevices,
+        name: AppRouteNames.parentLoginDevices,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const ParentLoginDevicesScreen(),
+      ),
+      GoRoute(
+        path: AppRoutePaths.parentMessages,
+        name: AppRouteNames.parentMessages,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const ParentMessagesScreen(),
+      ),
+      GoRoute(
+        path: AppRoutePaths.notifications,
+        name: AppRouteNames.notifications,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const ParentNotificationsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutePaths.accountSettings,
+        name: AppRouteNames.accountSettings,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const ParentAccountSettingsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutePaths.achievements,
+        name: AppRouteNames.achievements,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const ParentAchievementsScreen(),
+      ),
+      GoRoute(
+        path: AppRoutePaths.learningProgress,
+        name: AppRouteNames.learningProgress,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const ParentLearningProgressScreen(),
+      ),
+      GoRoute(
+        path: AppRoutePaths.teacherFeedback,
+        name: AppRouteNames.teacherFeedback,
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const TeacherFeedbackScreen(),
+      ),
+    ],
+  );
+});
