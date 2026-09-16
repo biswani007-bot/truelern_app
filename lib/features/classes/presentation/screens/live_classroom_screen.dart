@@ -191,7 +191,7 @@ class _LiveClassroomScreenState extends State<LiveClassroomScreen> {
                     Text(
                       'Public Speaking: Module 3',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 24,
+                        fontSize: 25.5,
                         fontWeight: FontWeight.w700,
                         color: const Color(0xFF191C1E),
                         height: 32 / 24,
@@ -205,7 +205,7 @@ class _LiveClassroomScreenState extends State<LiveClassroomScreen> {
                     Text(
                       'Communication Track',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFF22D3EE),
                         height: 16 / 12,
@@ -238,7 +238,7 @@ class _LiveClassroomScreenState extends State<LiveClassroomScreen> {
                           Text(
                             'LIVE',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 12,
+                              fontSize: 13,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFFB91C1C), // #b91c1c
                               height: 16 / 12,
@@ -311,7 +311,7 @@ class _LiveClassroomScreenState extends State<LiveClassroomScreen> {
                       Text(
                         'Sarah Jenkins',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 16,
+                          fontSize: 17,
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
                           height: 24 / 16,
@@ -332,7 +332,7 @@ class _LiveClassroomScreenState extends State<LiveClassroomScreen> {
                       Text(
                         'Instructor',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: FontWeight.w500,
                           color: Colors.white.withValues(alpha: 0.9),
                           height: 16 / 12,
@@ -483,7 +483,7 @@ class _LiveClassroomScreenState extends State<LiveClassroomScreen> {
                       Text(
                         name,
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.w400,
                           color: Colors.white,
                           height: 15 / 10,
@@ -542,7 +542,7 @@ class _LiveClassroomScreenState extends State<LiveClassroomScreen> {
           Text(
             '+9 Others',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 10,
+              fontSize: 11,
               fontWeight: FontWeight.w400,
               color: const Color(0xFF434655),
               height: 15 / 10,
@@ -705,7 +705,7 @@ class _LiveClassroomScreenState extends State<LiveClassroomScreen> {
                     child: Text(
                       'Leave',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 14,
+                        fontSize: 15,
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
                         letterSpacing: 0.1,

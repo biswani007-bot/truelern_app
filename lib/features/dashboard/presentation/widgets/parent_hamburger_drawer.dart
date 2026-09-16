@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/router/route_paths.dart';
+import '../../../auth/presentation/controllers/auth_controller.dart';
 
 /// Parent Hamburger Drawer — Default State.
 ///
@@ -31,15 +33,15 @@ import '../../../../core/router/route_paths.dart';
 /// STRICT RULES:
 /// - Zero backend calls / Zero API calls / Pure static frontend
 /// - 100% exact visual match to Figma Node 76:1249
-class ParentHamburgerDrawer extends StatelessWidget {
+class ParentHamburgerDrawer extends ConsumerWidget {
   const ParentHamburgerDrawer({
     super.key,
-    this.activeItem = 'Learning Progress',
+    this.activeItem,
     this.onTabSelected,
     this.onLogout,
   });
 
-  final String activeItem;
+  final String? activeItem;
   final ValueChanged<int>? onTabSelected;
   final VoidCallback? onLogout;
 
@@ -64,8 +66,101 @@ class ParentHamburgerDrawer extends StatelessWidget {
 
   static const String _svgSignOut = 'assets/icons/drawer_sign_out.svg';
 
+  /// Resolves the current matched route path from [GoRouter].
+  static String resolveCurrentPath(BuildContext context) {
+    try {
+      final router = GoRouter.of(context);
+      final uriPath = router.routerDelegate.currentConfiguration.uri.path;
+      if (uriPath.isNotEmpty) return uriPath;
+    } catch (_) {}
+    try {
+      final state = GoRouterState.of(context);
+      final location = state.matchedLocation;
+      if (location.isNotEmpty) return location;
+    } catch (_) {}
+    return '';
+  }
+
+  /// Maps the current route path (including child/nested routes) to the
+  /// corresponding Hamburger Drawer item label.
+  static String getDrawerActiveItemForPath(String path) {
+    // 1. My Programs: /parent/classes/program (must precede /parent/classes)
+    if (path.startsWith(AppRoutePaths.currentProgram)) {
+      return 'My Programs';
+    }
+    // 2. My Classes: /parent/classes and subroutes (:classId, preview, joining, live, summary)
+    if (path.startsWith(AppRoutePaths.parentClasses)) {
+      return 'My Classes';
+    }
+    // 3. Assignments: /parent/assignments and subroutes (:assignmentId, submission, submitted)
+    if (path.startsWith(AppRoutePaths.parentAssignments)) {
+      return 'Assignments';
+    }
+    // 4. Learning Progress: /parent/progress
+    if (path.startsWith(AppRoutePaths.learningProgress)) {
+      return 'Learning Progress';
+    }
+    // 5. Achievements: /parent/achievements
+    if (path.startsWith(AppRoutePaths.achievements)) {
+      return 'Achievements';
+    }
+    // 6. Messages: /parent/messages
+    if (path.startsWith(AppRoutePaths.parentMessages)) {
+      return 'Messages';
+    }
+    // 7. Notifications: /parent/notifications
+    if (path.startsWith(AppRoutePaths.notifications)) {
+      return 'Notifications';
+    }
+    // 8. Teacher Updates: /parent/teacher-feedback
+    if (path.startsWith(AppRoutePaths.teacherFeedback)) {
+      return 'Teacher Updates';
+    }
+    // 9. Account Settings: /parent/settings
+    if (path.startsWith(AppRoutePaths.accountSettings)) {
+      return 'Account Settings';
+    }
+    // 10. Security & Privacy: /parent/security-privacy and subroutes
+    //     (Login Methods: /parent/security/login-methods, Login & Devices: /parent/security/login-devices)
+    if (path.startsWith(AppRoutePaths.parentSecurityPrivacy) ||
+        path.startsWith(AppRoutePaths.parentLoginMethods) ||
+        path.startsWith(AppRoutePaths.parentLoginDevices)) {
+      return 'Security & Privacy';
+    }
+    // 11. My Profile: /parent/profile and child routes (My Child: /parent/children, Invoices: /parent/invoices)
+    if (path.startsWith(AppRoutePaths.parentProfile) ||
+        path.startsWith(AppRoutePaths.myChildren) ||
+        path.startsWith(AppRoutePaths.parentInvoices) ||
+        path.startsWith(AppRoutePaths.paymentSuccessful)) {
+      return 'My Profile';
+    }
+    return '';
+  }
+
+  void _navigate(
+    BuildContext context,
+    String destinationRoute,
+    String itemLabel,
+    String currentPath,
+    String effectiveActiveItem,
+  ) {
+    Navigator.of(context).pop();
+
+    // Prevent redundant navigation if already at the destination
+    if (effectiveActiveItem == itemLabel && currentPath == destinationRoute) {
+      return;
+    }
+
+    context.go(destinationRoute);
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentPath = resolveCurrentPath(context);
+    final effectiveActiveItem = (activeItem != null && activeItem!.isNotEmpty)
+        ? activeItem!
+        : getDrawerActiveItemForPath(currentPath);
+
     return Drawer(
       key: const Key('parent_hamburger_drawer'),
       width: 332,
@@ -152,7 +247,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                             Text(
                               'Hi, PPs',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 16,
+                                fontSize: 17,
                                 fontWeight: FontWeight.w700,
                                 height: 24 / 16,
                                 color: const Color(0xFF1A1B23),
@@ -161,7 +256,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                             Text(
                               'Parent',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 12,
+                                fontSize: 13,
                                 fontWeight: FontWeight.w500,
                                 height: 16 / 12,
                                 color: const Color(0xFF434655),
@@ -191,11 +286,14 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       iconSvg: _svgClasses,
                       iconWidth: 22,
                       iconHeight: 16,
-                      isActive: activeItem == 'My Classes',
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        onTabSelected?.call(1);
-                      },
+                      isActive: effectiveActiveItem == 'My Classes',
+                      onTap: () => _navigate(
+                        context,
+                        AppRoutePaths.parentClasses,
+                        'My Classes',
+                        currentPath,
+                        effectiveActiveItem,
+                      ),
                     ),
                     _buildMenuItem(
                       context: context,
@@ -203,11 +301,14 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       iconSvg: _svgAssignments,
                       iconWidth: 18,
                       iconHeight: 20,
-                      isActive: activeItem == 'Assignments',
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        onTabSelected?.call(2);
-                      },
+                      isActive: effectiveActiveItem == 'Assignments' || effectiveActiveItem == 'Assignment',
+                      onTap: () => _navigate(
+                        context,
+                        AppRoutePaths.parentAssignments,
+                        'Assignments',
+                        currentPath,
+                        effectiveActiveItem,
+                      ),
                     ),
                     _buildMenuItem(
                       context: context,
@@ -215,11 +316,14 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       iconSvg: _svgPrograms,
                       iconWidth: 16,
                       iconHeight: 16,
-                      isActive: activeItem == 'My Programs',
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        context.go(AppRoutePaths.currentProgram);
-                      },
+                      isActive: effectiveActiveItem == 'My Programs',
+                      onTap: () => _navigate(
+                        context,
+                        AppRoutePaths.currentProgram,
+                        'My Programs',
+                        currentPath,
+                        effectiveActiveItem,
+                      ),
                     ),
                     _buildMenuItem(
                       context: context,
@@ -227,11 +331,14 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       iconSvg: _svgLearningProgress,
                       iconWidth: 20,
                       iconHeight: 20,
-                      isActive: activeItem == 'Learning Progress', // Default active in Figma
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        context.go(AppRoutePaths.learningProgress);
-                      },
+                      isActive: effectiveActiveItem == 'Learning Progress',
+                      onTap: () => _navigate(
+                        context,
+                        AppRoutePaths.learningProgress,
+                        'Learning Progress',
+                        currentPath,
+                        effectiveActiveItem,
+                      ),
                     ),
 
                     const SizedBox(height: 24),
@@ -244,13 +351,14 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       iconSvg: _svgAchievements,
                       iconWidth: 18,
                       iconHeight: 18,
-                      isActive: activeItem == 'Achievements',
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        if (activeItem != 'Achievements') {
-                          context.go(AppRoutePaths.achievements);
-                        }
-                      },
+                      isActive: effectiveActiveItem == 'Achievements',
+                      onTap: () => _navigate(
+                        context,
+                        AppRoutePaths.achievements,
+                        'Achievements',
+                        currentPath,
+                        effectiveActiveItem,
+                      ),
                     ),
                     _buildMenuItem(
                       context: context,
@@ -258,10 +366,14 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       iconSvg: _svgCertificates,
                       iconWidth: 16,
                       iconHeight: 21,
-                      isActive: activeItem == 'Certificates',
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
+                      isActive: effectiveActiveItem == 'Certificates',
+                      onTap: () => _navigate(
+                        context,
+                        AppRoutePaths.achievements,
+                        'Certificates',
+                        currentPath,
+                        effectiveActiveItem,
+                      ),
                     ),
 
                     const SizedBox(height: 24),
@@ -274,13 +386,14 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       iconSvg: _svgMessages,
                       iconWidth: 20,
                       iconHeight: 20,
-                      isActive: activeItem == 'Messages',
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        if (activeItem != 'Messages') {
-                          context.go(AppRoutePaths.parentMessages);
-                        }
-                      },
+                      isActive: effectiveActiveItem == 'Messages',
+                      onTap: () => _navigate(
+                        context,
+                        AppRoutePaths.parentMessages,
+                        'Messages',
+                        currentPath,
+                        effectiveActiveItem,
+                      ),
                     ),
                     _buildMenuItem(
                       context: context,
@@ -288,13 +401,14 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       iconSvg: _svgNotifications,
                       iconWidth: 16,
                       iconHeight: 20,
-                      isActive: activeItem == 'Notifications',
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        if (activeItem != 'Notifications') {
-                          context.go(AppRoutePaths.notifications);
-                        }
-                      },
+                      isActive: effectiveActiveItem == 'Notifications',
+                      onTap: () => _navigate(
+                        context,
+                        AppRoutePaths.notifications,
+                        'Notifications',
+                        currentPath,
+                        effectiveActiveItem,
+                      ),
                     ),
                     _buildMenuItem(
                       context: context,
@@ -302,13 +416,14 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       iconSvg: _svgTeacherUpdates,
                       iconWidth: 22,
                       iconHeight: 19,
-                      isActive: activeItem == 'Teacher Updates',
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        if (activeItem != 'Teacher Updates') {
-                          context.go(AppRoutePaths.teacherFeedback);
-                        }
-                      },
+                      isActive: effectiveActiveItem == 'Teacher Updates',
+                      onTap: () => _navigate(
+                        context,
+                        AppRoutePaths.teacherFeedback,
+                        'Teacher Updates',
+                        currentPath,
+                        effectiveActiveItem,
+                      ),
                     ),
 
                     const SizedBox(height: 24),
@@ -321,11 +436,14 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       iconSvg: _svgProfile,
                       iconWidth: 16,
                       iconHeight: 16,
-                      isActive: activeItem == 'My Profile',
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        onTabSelected?.call(3);
-                      },
+                      isActive: effectiveActiveItem == 'My Profile' || effectiveActiveItem == 'Profile',
+                      onTap: () => _navigate(
+                        context,
+                        AppRoutePaths.parentProfile,
+                        'My Profile',
+                        currentPath,
+                        effectiveActiveItem,
+                      ),
                     ),
                     _buildMenuItem(
                       context: context,
@@ -333,11 +451,14 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       iconSvg: _svgSettings,
                       iconWidth: 20,
                       iconHeight: 20,
-                      isActive: activeItem == 'Account Settings',
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        context.go(AppRoutePaths.accountSettings);
-                      },
+                      isActive: effectiveActiveItem == 'Account Settings',
+                      onTap: () => _navigate(
+                        context,
+                        AppRoutePaths.accountSettings,
+                        'Account Settings',
+                        currentPath,
+                        effectiveActiveItem,
+                      ),
                     ),
                     _buildMenuItem(
                       context: context,
@@ -345,11 +466,14 @@ class ParentHamburgerDrawer extends StatelessWidget {
                       iconSvg: _svgSecurity,
                       iconWidth: 16,
                       iconHeight: 21,
-                      isActive: activeItem == 'Security & Privacy',
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        context.go(AppRoutePaths.parentSecurityPrivacy);
-                      },
+                      isActive: effectiveActiveItem == 'Security & Privacy',
+                      onTap: () => _navigate(
+                        context,
+                        AppRoutePaths.parentSecurityPrivacy,
+                        'Security & Privacy',
+                        currentPath,
+                        effectiveActiveItem,
+                      ),
                     ),
                   ],
                 ),
@@ -396,7 +520,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                           Text(
                             'Need help?',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 16,
+                              fontSize: 17,
                               fontWeight: FontWeight.w700,
                               height: 24 / 16,
                               color: const Color(0xFF25005A),
@@ -406,7 +530,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                           Text(
                             'Our support team is here for you.',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 14,
+                              fontSize: 15,
                               fontWeight: FontWeight.w400,
                               height: 20 / 14,
                               color: const Color(0xFF434655),
@@ -435,7 +559,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                               child: Text(
                                 'Contact Support',
                                 style: GoogleFonts.hankenGrotesk(
-                                  fontSize: 14,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.white,
                                   letterSpacing: 0.1,
@@ -453,9 +577,16 @@ class ParentHamburgerDrawer extends StatelessWidget {
                     // Button - Sign Out (Node 76:1373)
                     GestureDetector(
                       behavior: HitTestBehavior.opaque,
-                      onTap: () {
+                      onTap: () async {
                         Navigator.of(context).pop();
-                        onLogout?.call();
+                        if (onLogout != null) {
+                          onLogout?.call();
+                        } else {
+                          await ref.read(authControllerProvider.notifier).logout();
+                          if (context.mounted) {
+                            context.go(AppRoutePaths.login);
+                          }
+                        }
                       },
                       child: Container(
                         width: double.infinity,
@@ -479,7 +610,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                             Text(
                               'Sign Out',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 14,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xFFBA1A1A),
                                 letterSpacing: 0.1,
@@ -506,7 +637,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
       child: Text(
         title,
         style: GoogleFonts.hankenGrotesk(
-          fontSize: 12,
+          fontSize: 13,
           fontWeight: FontWeight.w500,
           color: const Color(0xFF747686),
           letterSpacing: 0.6,
@@ -528,6 +659,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       child: GestureDetector(
+        key: Key('drawer_item_${label.toLowerCase().replaceAll(' ', '_')}'),
         behavior: HitTestBehavior.opaque,
         onTap: onTap,
         child: Container(
@@ -559,7 +691,7 @@ class ParentHamburgerDrawer extends StatelessWidget {
                 child: Text(
                   label,
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w500,
                     height: 20 / 14,
                     color: isActive ? const Color(0xFFFBFAFF) : const Color(0xFF434655),

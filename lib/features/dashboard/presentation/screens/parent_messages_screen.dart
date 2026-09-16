@@ -43,26 +43,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: ParentHamburgerDrawer(
-        activeItem: 'Messages',
-        onTabSelected: (index) {
-          Navigator.of(context).pop();
-          switch (index) {
-            case 0:
-              context.go(AppRoutePaths.parentDashboard);
-              break;
-            case 1:
-              context.go(AppRoutePaths.parentClasses);
-              break;
-            case 2:
-              context.go(AppRoutePaths.parentAssignments);
-              break;
-            case 3:
-              context.go(AppRoutePaths.parentProfile);
-              break;
-          }
-        },
-      ),
+      drawer: const ParentHamburgerDrawer(),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -263,7 +244,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
         Text(
           'Messages',
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 28,
+            fontSize: 30,
             fontWeight: FontWeight.w700,
             color: const Color(0xFF1A1B23),
             height: 36 / 28,
@@ -298,7 +279,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
                 Text(
                   'Mark all read',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w500,
                     color: const Color(0xFF0037B1),
                     letterSpacing: 0.1,
@@ -439,7 +420,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
                             Text(
                               'Ms. Sarah',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 16,
+                                fontSize: 17,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xFF1A1B23),
                                 height: 24 / 16,
@@ -448,7 +429,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
                             Text(
                               '2m ago',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 12,
+                                fontSize: 13,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xFF0037B1),
                                 height: 16 / 12,
@@ -472,7 +453,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
                           child: Text(
                             'COMMUNICATION',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 10,
+                              fontSize: 11,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFF22D3EE),
                               letterSpacing: 0.5,
@@ -487,7 +468,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
                         Text(
                           'Great work in today\'s class. Keep it up!',
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 14,
+                            fontSize: 15,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFF1A1B23),
                             height: 20 / 14,
@@ -566,7 +547,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
                       Text(
                         'TrueLern Support',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 16,
+                          fontSize: 17,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFF1A1B23),
                           height: 24 / 16,
@@ -575,7 +556,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
                       Text(
                         '1h ago',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: FontWeight.w500,
                           color: const Color(0xFF747686),
                           height: 16 / 12,
@@ -590,7 +571,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
                   Text(
                     'Your demo booking is confirmed. See you soon!',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF434655),
                       height: 20 / 14,
@@ -703,7 +684,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
                       Text(
                         'Ms. Jenkins',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 16,
+                          fontSize: 17,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFF1A1B23),
                           height: 24 / 16,
@@ -712,7 +693,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
                       Text(
                         'Yesterday',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: FontWeight.w500,
                           color: const Color(0xFF747686),
                           height: 16 / 12,
@@ -736,7 +717,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
                     child: Text(
                       'JUNIOR FOUNDATION',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 10,
+                        fontSize: 11,
                         fontWeight: FontWeight.w700,
                         color: const Color(0xFF14B8A6),
                         letterSpacing: 0.5,
@@ -751,7 +732,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
                   Text(
                     'Don\'t forget to upload your blocks assignment by Friday.',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF434655),
                       height: 20 / 14,
@@ -782,7 +763,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
             Text(
               'You\'re all caught up!',
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 14,
+                fontSize: 15,
                 fontWeight: FontWeight.w500,
                 color: const Color(0xFF747686),
                 letterSpacing: 0.1,
@@ -880,7 +861,7 @@ class _ParentMessagesScreenState extends State<ParentMessagesScreen> {
               label,
               style: GoogleFonts.hankenGrotesk(
                 color: color,
-                fontSize: 12,
+                fontSize: 13,
                 fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
                 height: 16 / 12,
               ),

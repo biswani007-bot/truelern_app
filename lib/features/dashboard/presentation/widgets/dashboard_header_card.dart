@@ -63,7 +63,7 @@ class DashboardHeaderCard extends StatelessWidget {
                   greeting,
                   style: AppTypography.titleLarge.copyWith(
                     color: AppColors.textInverse,
-                    fontSize: 22,
+                    fontSize: 23.5,
                     fontWeight: FontWeight.w700,
                   ),
                 ),

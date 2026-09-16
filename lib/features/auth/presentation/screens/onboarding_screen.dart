@@ -176,7 +176,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             child: Text(
                               'Skip',
                               style: GoogleFonts.beVietnamPro(
-                                fontSize: 14.0,
+                                fontSize: 15.0,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFF434655),
                                 letterSpacing: 0.28,
@@ -323,7 +323,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     step.title,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.beVietnamPro(
-                      fontSize: 26.0,
+                      fontSize: 28.0,
                       fontWeight: FontWeight.w700,
                       height: 34.0 / 26.0,
                       letterSpacing: step.titleTracking,
@@ -511,7 +511,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   isLast ? 'Get Started' : 'Next',
                   style: GoogleFonts.beVietnamPro(
                     color: Colors.white,
-                    fontSize: 14.0,
+                    fontSize: 15.0,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.28,
                   ),

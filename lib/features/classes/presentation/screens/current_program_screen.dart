@@ -173,7 +173,7 @@ class CurrentProgramScreen extends ConsumerWidget {
             errorBuilder: (_, _, _) => Text(
               'TrueLern',
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 22,
+                fontSize: 23.5,
                 fontWeight: FontWeight.w800,
                 color: const Color(0xFF0037B1),
               ),
@@ -245,7 +245,7 @@ class CurrentProgramScreen extends ConsumerWidget {
               Text(
                 'ACTIVE TRACK',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.w400,
                   letterSpacing: 0.8,
                   color: const Color(0xFF1A1B23),
@@ -261,7 +261,7 @@ class CurrentProgramScreen extends ConsumerWidget {
           'Communication & Public Speaking',
           textAlign: TextAlign.center,
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w700,
             color: const Color(0xFF1A1B23),
             height: 24 / 16,
@@ -274,7 +274,7 @@ class CurrentProgramScreen extends ConsumerWidget {
           'Master the art of expression and build confidence\nfor every stage.',
           textAlign: TextAlign.center,
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w400,
             color: const Color(0xFF434655),
             height: 24 / 16,
@@ -336,7 +336,7 @@ class CurrentProgramScreen extends ConsumerWidget {
                           Text(
                             'Track Progress',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 16,
+                              fontSize: 17,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xFF1A1B23),
                               height: 24 / 16,
@@ -347,7 +347,7 @@ class CurrentProgramScreen extends ConsumerWidget {
                           Text(
                             '12 of 24 classes completed',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 16,
+                              fontSize: 17,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xFF434655),
                               height: 24 / 16,
@@ -361,7 +361,7 @@ class CurrentProgramScreen extends ConsumerWidget {
                     Text(
                       '50%',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: FontWeight.w700,
                         color: const Color(0xFF22D3EE),
                         height: 24 / 16,
@@ -512,7 +512,7 @@ class CurrentProgramScreen extends ConsumerWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
               color: isLocked
                   ? const Color(0xFF434655)
@@ -592,7 +592,7 @@ class CurrentProgramScreen extends ConsumerWidget {
                 child: Text(
                   badge,
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF434655),
                     height: 24 / 16,
@@ -607,7 +607,7 @@ class CurrentProgramScreen extends ConsumerWidget {
           Text(
             title,
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w700,
               color: const Color(0xFF1A1B23),
               height: 24 / 16,
@@ -627,7 +627,7 @@ class CurrentProgramScreen extends ConsumerWidget {
               Text(
                 time,
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.w400,
                   color: const Color(0xFF434655),
                   height: 24 / 16,
@@ -698,7 +698,7 @@ class CurrentProgramScreen extends ConsumerWidget {
                 child: Text(
                   pendingText,
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.w700,
                     color: const Color(0xFFBA1A1A),
                     height: 24 / 16,
@@ -713,7 +713,7 @@ class CurrentProgramScreen extends ConsumerWidget {
           Text(
             'Recent Assignments',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w700,
               color: const Color(0xFF1A1B23),
               height: 24 / 16,
@@ -746,7 +746,7 @@ class CurrentProgramScreen extends ConsumerWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 16,
+                          fontSize: 17,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xFF1A1B23),
                           height: 24 / 16,
@@ -757,7 +757,7 @@ class CurrentProgramScreen extends ConsumerWidget {
                       Text(
                         taskDue,
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.w500,
                           color: const Color(0xFFBA1A1A),
                           height: 15 / 10,
@@ -796,7 +796,7 @@ class CurrentProgramScreen extends ConsumerWidget {
               child: Text(
                 'View All Tasks',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.w400,
                   color: const Color(0xFF1A1B23),
                   height: 24 / 16,
@@ -820,7 +820,7 @@ class CurrentProgramScreen extends ConsumerWidget {
           child: Text(
             'Skills in Focus',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w700,
               color: const Color(0xFF1A1B23),
               height: 24 / 16,
@@ -875,7 +875,7 @@ class CurrentProgramScreen extends ConsumerWidget {
   }) {
     return Container(
       height: 108,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -914,7 +914,7 @@ class CurrentProgramScreen extends ConsumerWidget {
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w400,
               color: const Color(0xFF1A1B23),
               height: 20 / 16,

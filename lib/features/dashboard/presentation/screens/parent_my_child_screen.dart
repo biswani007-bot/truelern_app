@@ -69,7 +69,7 @@ class ParentMyChildScreen extends StatelessWidget {
                         'My Child',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 28,
+                          fontSize: 30,
                           fontWeight: FontWeight.w700,
                           height: 36 / 28,
                           color: const Color(0xFF1A1B23),
@@ -80,7 +80,7 @@ class ParentMyChildScreen extends StatelessWidget {
                         'Select a profile to view their learning journey.',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 16,
+                          fontSize: 17,
                           fontWeight: FontWeight.w400,
                           height: 24 / 16,
                           color: const Color(0xFF434655),
@@ -164,8 +164,8 @@ class ParentMyChildScreen extends StatelessWidget {
             child: InkWell(
               borderRadius: BorderRadius.circular(9999),
               onTap: () {
-                if (Navigator.of(context).canPop()) {
-                  Navigator.of(context).pop();
+                if (context.canPop()) {
+                  context.pop();
                 } else {
                   context.go(AppRoutePaths.parentProfile);
                 }
@@ -194,7 +194,7 @@ class ParentMyChildScreen extends StatelessWidget {
             errorBuilder: (context, error, stackTrace) => Text(
               'TrueLern',
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 22,
+                fontSize: 23.5,
                 fontWeight: FontWeight.w700,
                 color: const Color(0xFF0037B1),
               ),
@@ -314,7 +314,7 @@ class ParentMyChildScreen extends StatelessWidget {
                         Text(
                           name,
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 20,
+                            fontSize: 21.5,
                             fontWeight: FontWeight.w600,
                             height: 28 / 20,
                             color: const Color(0xFF1A1B23),
@@ -330,7 +330,7 @@ class ParentMyChildScreen extends StatelessWidget {
                           child: Text(
                             age,
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 12,
+                              fontSize: 13,
                               fontWeight: FontWeight.w500,
                               height: 16 / 12,
                               color: const Color(0xFF434655),
@@ -363,7 +363,7 @@ class ParentMyChildScreen extends StatelessWidget {
                               skill,
                               overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 12,
+                                fontSize: 13,
                                 fontWeight: FontWeight.w500,
                                 height: 16 / 12,
                                 color: const Color(0xFF1A1B23),
@@ -398,7 +398,7 @@ class ParentMyChildScreen extends StatelessWidget {
                       Text(
                         'Overall Progress',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: FontWeight.w500,
                           height: 16 / 12,
                           color: const Color(0xFF434655),
@@ -408,7 +408,7 @@ class ParentMyChildScreen extends StatelessWidget {
                       Text(
                         progressText,
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 20,
+                          fontSize: 21.5,
                           fontWeight: FontWeight.w600,
                           height: 28 / 20,
                           color: const Color(0xFF0037B1),
@@ -445,7 +445,7 @@ class ParentMyChildScreen extends StatelessWidget {
                       Text(
                         'Attendance',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: FontWeight.w500,
                           height: 16 / 12,
                           color: const Color(0xFF434655),
@@ -455,7 +455,7 @@ class ParentMyChildScreen extends StatelessWidget {
                       Text(
                         attendanceText,
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 20,
+                          fontSize: 21.5,
                           fontWeight: FontWeight.w600,
                           height: 28 / 20,
                           color: const Color(0xFF1A1B23),
@@ -501,7 +501,7 @@ class ParentMyChildScreen extends StatelessWidget {
                   Text(
                     'VIEW CHILD',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.w500,
                       height: 20 / 14,
                       color: Colors.white,
@@ -572,7 +572,7 @@ class ParentMyChildScreen extends StatelessWidget {
               Text(
                 'ADD CHILD',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.w500,
                   height: 24 / 16,
                   color: const Color(0xFF434655),

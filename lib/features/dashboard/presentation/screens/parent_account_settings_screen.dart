@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/router/route_paths.dart';
+import '../widgets/parent_hamburger_drawer.dart';
 
 /// Parent Account Settings Screen — PURE STATIC FRONTEND ONLY.
 ///
@@ -58,6 +59,7 @@ class _ParentAccountSettingsScreenState
     return Scaffold(
       key: const Key('parent_account_settings_screen'),
       backgroundColor: Colors.white,
+      drawer: const ParentHamburgerDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -161,7 +163,7 @@ class _ParentAccountSettingsScreenState
             child: Text(
               'Account Settings',
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 24,
+                fontSize: 25.5,
                 fontWeight: FontWeight.w700,
                 color: const Color(0xFF191C1E),
                 height: 32 / 24,
@@ -177,7 +179,13 @@ class _ParentAccountSettingsScreenState
               child: InkWell(
                 key: const Key('account_settings_back_button'),
                 borderRadius: BorderRadius.circular(9999),
-                onTap: () => Navigator.of(context).pop(),
+                onTap: () {
+                  if (context.canPop()) {
+                    context.pop();
+                  } else {
+                    context.go(AppRoutePaths.parentDashboard);
+                  }
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(8),
                   child: SvgPicture.asset(
@@ -285,7 +293,7 @@ class _ParentAccountSettingsScreenState
           Text(
             'PPs',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 20,
+              fontSize: 21.5,
               fontWeight: FontWeight.w600,
               color: const Color(0xFF1A1B23),
               height: 28 / 20,
@@ -298,7 +306,7 @@ class _ParentAccountSettingsScreenState
           Text(
             'Student Account',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 14,
+              fontSize: 15,
               fontWeight: FontWeight.w400,
               color: const Color(0xFF434655),
               height: 20 / 14,
@@ -316,7 +324,7 @@ class _ParentAccountSettingsScreenState
       child: Text(
         title,
         style: GoogleFonts.hankenGrotesk(
-          fontSize: 14,
+          fontSize: 15,
           fontWeight: FontWeight.w500,
           color: const Color(0xFF434655),
           letterSpacing: 0.7,
@@ -412,7 +420,7 @@ class _ParentAccountSettingsScreenState
                     child: Text(
                       'Notifications',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFF1A1B23),
                         height: 24 / 16,
@@ -559,7 +567,7 @@ class _ParentAccountSettingsScreenState
                     Text(
                       'Sign Out',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFFBA1A1A),
                         height: 24 / 16,
@@ -596,7 +604,7 @@ class _ParentAccountSettingsScreenState
                     Text(
                       'Delete Account',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xB3BA1A1A), // rgba(186, 26, 26, 0.7)
                         height: 24 / 16,
@@ -690,7 +698,7 @@ class _ParentAccountSettingsScreenState
                         Text(
                           label,
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 14,
+                            fontSize: 15,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xFF434655),
                             height: 20 / 14,
@@ -699,7 +707,7 @@ class _ParentAccountSettingsScreenState
                         Text(
                           value,
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 16,
+                            fontSize: 17,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF1A1B23),
                             height: 24 / 16,
@@ -772,7 +780,7 @@ class _ParentAccountSettingsScreenState
                     child: Text(
                       title,
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFF1A1B23),
                         height: 24 / 16,
@@ -785,7 +793,7 @@ class _ParentAccountSettingsScreenState
                     Text(
                       trailingText,
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 14,
+                        fontSize: 15,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xFF434655),
                         height: 20 / 14,

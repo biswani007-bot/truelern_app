@@ -108,7 +108,7 @@ class ParentProfileScreen extends StatelessWidget {
           Text(
             'Profile',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 24,
+              fontSize: 25.5,
               fontWeight: FontWeight.w700,
               color: Colors.white,
               height: 32 / 24,
@@ -211,7 +211,7 @@ class ParentProfileScreen extends StatelessWidget {
         Text(
           _name,
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 24,
+            fontSize: 25.5,
             fontWeight: FontWeight.w600,
             color: Colors.white,
             height: 32 / 24,
@@ -224,7 +224,7 @@ class ParentProfileScreen extends StatelessWidget {
         Text(
           _email,
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 14,
+            fontSize: 15,
             fontWeight: FontWeight.w400,
             color: Colors.white.withValues(alpha: 0.8),
             height: 20 / 14,
@@ -270,7 +270,7 @@ class ParentProfileScreen extends StatelessWidget {
               child: Text(
                 'Account Overview',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 20,
+                  fontSize: 21.5,
                   fontWeight: FontWeight.w600,
                   color: const Color(0xFF0F172A),
                   height: 28 / 20,
@@ -384,7 +384,7 @@ class ParentProfileScreen extends StatelessWidget {
               child: Text(
                 item.label,
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.w500,
                   color: const Color(0xFF1F2937),
                   height: 24 / 16,
@@ -461,7 +461,7 @@ class ParentProfileScreen extends StatelessWidget {
               child: Text(
                 'Delete Account',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.w500,
                   color: const Color(0xFFEF4444),
                   height: 24 / 16,

@@ -15,7 +15,7 @@ class MyLearningSection extends StatelessWidget {
           child: Text(
             'My Learning',
             style: AppTypography.titleMedium.copyWith(
-              fontSize: 20,
+              fontSize: 21.5,
               fontWeight: FontWeight.w700,
               color: const Color(0xFF1A1B23),
             ),
@@ -117,7 +117,7 @@ class _CourseCard extends StatelessWidget {
                   style: AppTypography.labelSmall.copyWith(
                     color: iconColor,
                     fontWeight: FontWeight.w500,
-                    fontSize: 12,
+                    fontSize: 13,
                   ),
                 ),
               ),
@@ -127,7 +127,7 @@ class _CourseCard extends StatelessWidget {
           Text(
             title,
             style: AppTypography.titleMedium.copyWith(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w700,
               color: const Color(0xFF1A1B23),
             ),
@@ -141,7 +141,7 @@ class _CourseCard extends StatelessWidget {
                 style: AppTypography.labelSmall.copyWith(
                   color: const Color(0xFF434655),
                   fontWeight: FontWeight.w500,
-                  fontSize: 12,
+                  fontSize: 13,
                 ),
               ),
               Text(
@@ -149,7 +149,7 @@ class _CourseCard extends StatelessWidget {
                 style: AppTypography.labelSmall.copyWith(
                   color: iconColor,
                   fontWeight: FontWeight.w700,
-                  fontSize: 12,
+                  fontSize: 13,
                 ),
               ),
             ],
@@ -177,7 +177,7 @@ class _CourseCard extends StatelessWidget {
                 scheduleText,
                 style: AppTypography.bodySmall.copyWith(
                   color: const Color(0xFF434655),
-                  fontSize: 14,
+                  fontSize: 15,
                   fontWeight: FontWeight.w400,
                 ),
               ),

@@ -157,7 +157,7 @@ class _ParentClassesScreenState extends ConsumerState<ParentClassesScreen> {
           Text(
             'My Classes',
             style: AppTypography.displayLarge.copyWith(
-              fontSize: 24,
+              fontSize: 25.5,
               fontWeight: FontWeight.w700,
               color: const Color(0xFF191C1E),
               letterSpacing: -0.5,
@@ -260,7 +260,7 @@ class _ParentClassesScreenState extends ConsumerState<ParentClassesScreen> {
                   Text(
                     'Upcoming Events',
                     style: AppTypography.displayLarge.copyWith(
-                      fontSize: 24,
+                      fontSize: 25.5,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFF0F172A),
                     ),
@@ -341,7 +341,7 @@ class _ParentClassesScreenState extends ConsumerState<ParentClassesScreen> {
                     'Explore Programs',
                     style: AppTypography.labelLarge.copyWith(
                       color: const Color(0xFF0037B1),
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.w600,
                     ),
                   ),

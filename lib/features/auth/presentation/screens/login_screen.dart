@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,18 +29,53 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _passwordController = TextEditingController();
 
   bool _isPasswordVisible = false;
+  Timer? _demoTimer;
+  String? _identifierError;
+  String? _passwordError;
 
   @override
   void dispose() {
+    _demoTimer?.cancel();
     _identifierController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
 
+  void _validateIdentifier() {
+    final val = _identifierController.text.trim();
+    if (val.isEmpty) {
+      _identifierError = 'Please enter your email address.';
+    } else {
+      final isPhone = RegExp(r'^\+?[0-9]{7,15}$').hasMatch(val);
+      final isEmail = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(val);
+      if (!isEmail && !isPhone) {
+        _identifierError = 'Please enter a valid email address.';
+      } else {
+        _identifierError = null;
+      }
+    }
+  }
+
+  void _validatePassword() {
+    final val = _passwordController.text.trim();
+    if (val.isEmpty) {
+      _passwordError = 'Please enter your password.';
+    } else if (val.length < 6) {
+      _passwordError = 'Password must be at least 6 characters.';
+    } else {
+      _passwordError = null;
+    }
+  }
+
   Future<void> _submitLogin() async {
     ref.read(authControllerProvider.notifier).resetError();
 
-    if (!_formKey.currentState!.validate()) {
+    setState(() {
+      _validateIdentifier();
+      _validatePassword();
+    });
+
+    if (_identifierError != null || _passwordError != null) {
       return;
     }
 
@@ -60,32 +97,47 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     }
   }
 
-  void _onGoogleLoginTapped() {
+  void _onDemoSocialLogin() {
+    ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(
-          'Google authentication is not configured on the backend. Please sign in with your credentials.',
-          style: AppTypography.bodySmall.copyWith(color: AppColors.textInverse),
+        content: const Row(
+          children: [
+            Icon(Icons.check_circle, color: Colors.white, size: 20),
+            SizedBox(width: 8),
+            Text(
+              'Sign in successful',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: 15,
+              ),
+            ),
+          ],
         ),
-        backgroundColor: AppColors.slate800,
+        backgroundColor: const Color(0xFF10B981),
         behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 2),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
       ),
     );
+
+    _demoTimer?.cancel();
+    _demoTimer = Timer(const Duration(milliseconds: 600), () {
+      if (mounted) {
+        try {
+          context.go(AppRoutePaths.demoBookingDashboard);
+        } catch (_) {}
+      }
+    });
+  }
+
+  void _onGoogleLoginTapped() {
+    _onDemoSocialLogin();
   }
 
   void _onMicrosoftLoginTapped() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Microsoft authentication is not configured on the backend. Please sign in with your credentials.',
-          style: AppTypography.bodySmall.copyWith(color: AppColors.textInverse),
-        ),
-        backgroundColor: AppColors.slate800,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-      ),
-    );
+    _onDemoSocialLogin();
   }
 
   @override
@@ -219,7 +271,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               Text(
                                 'Welcome',
                                 style: AppTypography.displayMedium.copyWith(
-                                  fontSize: 26.0,
+                                  fontSize: 28.0,
                                   fontWeight: FontWeight.w700,
                                   letterSpacing: -0.26,
                                   color: const Color(0xFF0F172A),
@@ -233,7 +285,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               Text(
                                 'Sign in to continue your learning\njourney.',
                                 style: AppTypography.bodyMedium.copyWith(
-                                  fontSize: 16.0,
+                                  fontSize: 17.0,
                                   height: 1.5,
                                   color: const Color(0xFF434655),
                                 ),
@@ -242,9 +294,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                               const SizedBox(height: 24.0),
 
-                              // WhatsApp / Email Input Field (Node 71:248)
+                              // Email Input Field (Node 71:248)
                               Container(
-                                height: 48.0,
+                                height: 54.0,
                                 decoration: BoxDecoration(
                                   color: const Color(0xFFF7F9FC),
                                   borderRadius: BorderRadius.circular(8.0),
@@ -276,7 +328,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                         keyboardType: TextInputType.emailAddress,
                                         style: AppTypography.bodyMedium.copyWith(
                                           color: const Color(0xFF0F172A),
-                                          fontSize: 14.0,
+                                          fontSize: 15.0,
                                         ),
                                         decoration: InputDecoration(
                                           isDense: true,
@@ -284,23 +336,18 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                           border: InputBorder.none,
                                           enabledBorder: InputBorder.none,
                                           focusedBorder: InputBorder.none,
-                                          hintText: 'WhatsApp Number or Email',
+                                          hintText: 'Email',
                                           hintStyle: AppTypography.bodyMedium.copyWith(
                                             color: const Color(0xFF747686),
-                                            fontSize: 14.0,
+                                            fontSize: 15.0,
                                           ),
                                         ),
-                                        validator: (val) {
-                                          if (val == null || val.trim().isEmpty) {
-                                            return 'Please enter your email address.';
+                                        onChanged: (_) {
+                                          if (_identifierError != null) {
+                                            setState(() {
+                                              _validateIdentifier();
+                                            });
                                           }
-                                          final trimmed = val.trim();
-                                          final isPhone = RegExp(r'^\+?[0-9]{7,15}$').hasMatch(trimmed);
-                                          final isEmail = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(trimmed);
-                                          if (!isEmail && !isPhone) {
-                                            return 'Please enter a valid email address.';
-                                          }
-                                          return null;
                                         },
                                       ),
                                     ),
@@ -308,12 +355,29 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   ],
                                 ),
                               ),
+                              if (_identifierError != null) ...[
+                                const SizedBox(height: 6.0),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 4.0),
+                                    child: Text(
+                                      _identifierError!,
+                                      style: AppTypography.bodySmall.copyWith(
+                                        color: AppColors.errorDark,
+                                        fontSize: 13.0,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
 
                               const SizedBox(height: 16.0),
 
                               // Password Field (Collapsible or present for backend authentication)
                               Container(
-                                height: 48.0,
+                                height: 54.0,
                                 decoration: BoxDecoration(
                                   color: const Color(0xFFF7F9FC),
                                   borderRadius: BorderRadius.circular(8.0),
@@ -341,7 +405,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                         obscureText: !_isPasswordVisible,
                                         style: AppTypography.bodyMedium.copyWith(
                                           color: const Color(0xFF0F172A),
-                                          fontSize: 14.0,
+                                          fontSize: 15.0,
                                         ),
                                         decoration: InputDecoration(
                                           isDense: true,
@@ -352,17 +416,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                           hintText: 'Password',
                                           hintStyle: AppTypography.bodyMedium.copyWith(
                                             color: const Color(0xFF747686),
-                                            fontSize: 14.0,
+                                            fontSize: 15.0,
                                           ),
                                         ),
-                                        validator: (val) {
-                                          if (val == null || val.trim().isEmpty) {
-                                            return 'Please enter your password.';
+                                        onChanged: (_) {
+                                          if (_passwordError != null) {
+                                            setState(() {
+                                              _validatePassword();
+                                            });
                                           }
-                                          if (val.trim().length < 6) {
-                                            return 'Password must be at least 6 characters.';
-                                          }
-                                          return null;
                                         },
                                         onFieldSubmitted: (_) => _submitLogin(),
                                       ),
@@ -384,6 +446,23 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                   ],
                                 ),
                               ),
+                              if (_passwordError != null) ...[
+                                const SizedBox(height: 6.0),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 4.0),
+                                    child: Text(
+                                      _passwordError!,
+                                      style: AppTypography.bodySmall.copyWith(
+                                        color: AppColors.errorDark,
+                                        fontSize: 13.0,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
 
                               const SizedBox(height: 16.0),
 
@@ -415,7 +494,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                       : Text(
                                           'Continue',
                                           style: AppTypography.buttonText.copyWith(
-                                            fontSize: 16.0,
+                                            fontSize: 17.0,
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),
@@ -447,7 +526,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                     child: Text(
                                       'Or continue with',
                                       style: AppTypography.bodySmall.copyWith(
-                                        fontSize: 12.0,
+                                        fontSize: 13.0,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xFF747686),
                                       ),
@@ -491,7 +570,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                         'Sign in with Google',
                                         style: AppTypography.titleSmall.copyWith(
                                           color: const Color(0xFF191C1E),
-                                          fontSize: 14.0,
+                                          fontSize: 15.0,
                                           fontWeight: FontWeight.w600,
                                           letterSpacing: 0.28,
                                         ),
@@ -535,7 +614,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                                         'Sign in with Microsoft',
                                         style: AppTypography.titleSmall.copyWith(
                                           color: const Color(0xFF191C1E),
-                                          fontSize: 14.0,
+                                          fontSize: 15.0,
                                           fontWeight: FontWeight.w600,
                                           letterSpacing: 0.28,
                                         ),

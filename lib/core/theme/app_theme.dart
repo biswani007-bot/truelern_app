@@ -98,6 +98,27 @@ abstract final class AppTheme {
         thickness: 1.0,
         space: 1.0,
       ),
+      textTheme: TextTheme(
+        displayLarge: AppTypography.displayLarge,
+        displayMedium: AppTypography.displayMedium,
+        titleLarge: AppTypography.titleLarge,
+        titleMedium: AppTypography.titleMedium,
+        titleSmall: AppTypography.titleSmall,
+        bodyLarge: AppTypography.bodyLarge,
+        bodyMedium: AppTypography.bodyMedium,
+        bodySmall: AppTypography.bodySmall,
+        labelLarge: AppTypography.labelLarge,
+        labelMedium: AppTypography.labelMedium,
+        labelSmall: AppTypography.labelSmall,
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        selectedLabelStyle: AppTypography.labelMedium.copyWith(
+          fontWeight: FontWeight.w600,
+        ),
+        unselectedLabelStyle: AppTypography.labelMedium.copyWith(
+          fontWeight: FontWeight.w500,
+        ),
+      ),
     );
   }
 }

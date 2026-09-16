@@ -163,7 +163,7 @@ class _ClassesDateNavigatorState extends State<ClassesDateNavigator> {
                               color: isSelected
                                   ? Colors.white.withValues(alpha: 0.80)
                                   : const Color(0xFF475569),
-                              fontSize: 11.0,
+                              fontSize: 11.5,
                               fontWeight: FontWeight.w500,
                               letterSpacing: 0.5,
                               height: 16.0 / 11.0,
@@ -175,7 +175,7 @@ class _ClassesDateNavigatorState extends State<ClassesDateNavigator> {
                             dayNumber,
                             style: GoogleFonts.hankenGrotesk(
                               color: isSelected ? Colors.white : const Color(0xFF0F172A),
-                              fontSize: 16.0,
+                              fontSize: 17.0,
                               fontWeight: FontWeight.w600,
                               height: 24.0 / 16.0,
                             ),

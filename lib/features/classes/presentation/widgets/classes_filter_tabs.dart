@@ -69,7 +69,7 @@ class ClassesFilterTabs extends StatelessWidget {
                     filter,
                     style: AppTypography.labelMedium.copyWith(
                       color: isSelected ? Colors.white : const Color(0xFF0F172A),
-                      fontSize: 12,
+                      fontSize: 13,
                       fontWeight: FontWeight.w500,
                       letterSpacing: 0.5,
                     ),

@@ -200,7 +200,7 @@ class AssignmentSubmittedScreen extends StatelessWidget {
           'Assignment Submitted',
           textAlign: TextAlign.center,
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 28,
+            fontSize: 30,
             fontWeight: FontWeight.w800,
             color: const Color(0xFF0037B1),
             letterSpacing: -0.7,
@@ -216,7 +216,7 @@ class AssignmentSubmittedScreen extends StatelessWidget {
             'Great job! Your $topic assignment is\nsecurely in the hands of our reviewers.',
             textAlign: TextAlign.center,
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w400,
               color: const Color(0xFF434655),
               height: 24 / 16,
@@ -271,7 +271,7 @@ class AssignmentSubmittedScreen extends StatelessWidget {
                   child: Text(
                     'Submission Details',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 16,
+                      fontSize: 17,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFF1A1B23),
                       height: 24 / 16,
@@ -297,7 +297,7 @@ class AssignmentSubmittedScreen extends StatelessWidget {
                     child: Text(
                       'Submitted',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 14,
+                        fontSize: 15,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xFF434655),
                         height: 20 / 14,
@@ -308,7 +308,7 @@ class AssignmentSubmittedScreen extends StatelessWidget {
                   Text(
                     submittedTime,
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFF1A1B23),
                       letterSpacing: 0.1,
@@ -329,7 +329,7 @@ class AssignmentSubmittedScreen extends StatelessWidget {
                     child: Text(
                       'Status',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 14,
+                        fontSize: 15,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xFF434655),
                         height: 20 / 14,
@@ -356,7 +356,7 @@ class AssignmentSubmittedScreen extends StatelessWidget {
                         Text(
                           'Under Review',
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 12,
+                            fontSize: 13,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFF0037B1),
                             height: 16 / 12,
@@ -420,7 +420,7 @@ class AssignmentSubmittedScreen extends StatelessWidget {
                     Text(
                       topic.toUpperCase(),
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFFA855F7),
                         letterSpacing: 0.6,
@@ -431,7 +431,7 @@ class AssignmentSubmittedScreen extends StatelessWidget {
                     Text(
                       classTitle,
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFF1A1B23),
                         height: 20 / 16,
@@ -448,7 +448,7 @@ class AssignmentSubmittedScreen extends StatelessWidget {
           Text(
             'This assignment is connected to the recent live class. Review the materials if needed.',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 14,
+              fontSize: 15,
               fontWeight: FontWeight.w400,
               color: const Color(0xFF434655),
               height: 20 / 14,
@@ -475,7 +475,7 @@ class AssignmentSubmittedScreen extends StatelessWidget {
                   Text(
                     'View Class Details',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFF0037B1),
                       letterSpacing: 0.1,
@@ -522,7 +522,7 @@ class AssignmentSubmittedScreen extends StatelessWidget {
             Text(
               'BACK TO LEARNING',
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 14,
+                fontSize: 15,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
                 letterSpacing: 0.1,

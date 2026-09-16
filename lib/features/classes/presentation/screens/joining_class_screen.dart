@@ -115,7 +115,7 @@ class _JoiningClassScreenState extends State<JoiningClassScreen>
                           'Joining your class...',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 28,
+                            fontSize: 30,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFF1A1B23),
                             height: 36 / 28,
@@ -128,7 +128,7 @@ class _JoiningClassScreenState extends State<JoiningClassScreen>
                           title,
                           textAlign: TextAlign.center,
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 16,
+                            fontSize: 17,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xFF434655),
                             height: 24 / 16,
@@ -279,7 +279,7 @@ class _JoiningClassScreenState extends State<JoiningClassScreen>
           'Connecting to virtual classroom...',
           textAlign: TextAlign.center,
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 12,
+            fontSize: 13,
             fontWeight: FontWeight.w500,
             color: const Color(0xFF434655),
             height: 16 / 12,
@@ -294,7 +294,7 @@ class _JoiningClassScreenState extends State<JoiningClassScreen>
           label: Text(
             'Enter Classroom →',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 13,
+              fontSize: 14,
               fontWeight: FontWeight.w600,
               color: const Color(0xFF0037B1),
             ),

@@ -176,7 +176,7 @@ class _ClassPreviewScreenState extends ConsumerState<ClassPreviewScreen> {
                 child: Text(
                   'Class Preview',
                   style: AppTypography.displayLarge.copyWith(
-                    fontSize: 24,
+                    fontSize: 25.5,
                     fontWeight: FontWeight.w700,
                     color: const Color(0xFF191C1E),
                     letterSpacing: -0.5,
@@ -255,7 +255,7 @@ class _ClassPreviewScreenState extends ConsumerState<ClassPreviewScreen> {
                   style: AppTypography.labelMedium.copyWith(
                     color: const Color(0xFF0891B2),
                     fontWeight: FontWeight.w600,
-                    fontSize: 12,
+                    fontSize: 13,
                   ),
                 ),
               ),
@@ -265,7 +265,7 @@ class _ClassPreviewScreenState extends ConsumerState<ClassPreviewScreen> {
               Text(
                 title,
                 style: AppTypography.displayLarge.copyWith(
-                  fontSize: 26,
+                  fontSize: 28,
                   fontWeight: FontWeight.w700,
                   color: const Color(0xFF1A1B23),
                   height: 1.25,
@@ -284,7 +284,7 @@ class _ClassPreviewScreenState extends ConsumerState<ClassPreviewScreen> {
                     'Teacher: $teacher',
                     style: AppTypography.bodyMedium.copyWith(
                       color: const Color(0xFF434655),
-                      fontSize: 14,
+                      fontSize: 15,
                     ),
                   ),
                 ],
@@ -305,7 +305,7 @@ class _ClassPreviewScreenState extends ConsumerState<ClassPreviewScreen> {
           child: Text(
             'Camera Preview',
             style: AppTypography.bodyLarge.copyWith(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w600,
               color: const Color(0xFF1A1B23),
             ),
@@ -398,7 +398,7 @@ class _ClassPreviewScreenState extends ConsumerState<ClassPreviewScreen> {
                               style: AppTypography.labelMedium.copyWith(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
-                                fontSize: 12,
+                                fontSize: 13,
                               ),
                             ),
                           ],
@@ -494,7 +494,7 @@ class _ClassPreviewScreenState extends ConsumerState<ClassPreviewScreen> {
           Text(
             'Device Check',
             style: AppTypography.bodyLarge.copyWith(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w600,
               color: const Color(0xFF1A1B23),
             ),
@@ -557,14 +557,14 @@ class _ClassPreviewScreenState extends ConsumerState<ClassPreviewScreen> {
                   style: AppTypography.bodyMedium.copyWith(
                     color: const Color(0xFF1A1B23),
                     fontWeight: FontWeight.w600,
-                    fontSize: 14,
+                    fontSize: 15,
                   ),
                 ),
                 Text(
                   subtitle,
                   style: AppTypography.bodySmall.copyWith(
                     color: const Color(0xFF434655),
-                    fontSize: 12,
+                    fontSize: 13,
                   ),
                 ),
               ],
@@ -611,7 +611,7 @@ class _ClassPreviewScreenState extends ConsumerState<ClassPreviewScreen> {
                   style: AppTypography.labelMedium.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
-                    fontSize: 14,
+                    fontSize: 15,
                     letterSpacing: 0.5,
                   ),
                 ),
@@ -649,7 +649,7 @@ class _ClassPreviewScreenState extends ConsumerState<ClassPreviewScreen> {
               style: AppTypography.labelMedium.copyWith(
                 color: const Color(0xFF0037B1),
                 fontWeight: FontWeight.w600,
-                fontSize: 14,
+                fontSize: 15,
               ),
             ),
           ),

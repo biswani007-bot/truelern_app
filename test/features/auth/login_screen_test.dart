@@ -66,8 +66,8 @@ void main() {
         findsOneWidget,
       );
 
-      // WhatsApp / Email field
-      expect(find.text('WhatsApp Number or Email'), findsOneWidget);
+      // Email field
+      expect(find.text('Email'), findsOneWidget);
       expect(find.byType(TextFormField), findsNWidgets(2));
 
       // Password field
@@ -197,7 +197,7 @@ void main() {
       );
     });
 
-    testWidgets('tapping Google button shows informative unavailable notification',
+    testWidgets('tapping Google button shows informative success notification',
         (WidgetTester tester) async {
       await tester.pumpWidget(createLoginApp());
       await tester.pump();
@@ -206,12 +206,12 @@ void main() {
       await tester.pump();
 
       expect(
-        find.text('Google authentication is not configured on the backend. Please sign in with your credentials.'),
+        find.text('Sign in successful'),
         findsOneWidget,
       );
     });
 
-    testWidgets('tapping Microsoft button shows informative unavailable notification',
+    testWidgets('tapping Microsoft button shows informative success notification',
         (WidgetTester tester) async {
       await tester.pumpWidget(createLoginApp());
       await tester.pump();
@@ -221,7 +221,7 @@ void main() {
       await tester.pump();
 
       expect(
-        find.text('Microsoft authentication is not configured on the backend. Please sign in with your credentials.'),
+        find.text('Sign in successful'),
         findsOneWidget,
       );
     });

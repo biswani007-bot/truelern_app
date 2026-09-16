@@ -27,7 +27,7 @@ class FeaturedClassCard extends StatelessWidget {
               color: AppColors.textPrimary,
               fontWeight: FontWeight.w800,
               letterSpacing: 0.8,
-              fontSize: 12,
+              fontSize: 13,
             ),
           ),
         ),
@@ -86,7 +86,7 @@ class FeaturedClassCard extends StatelessWidget {
                             style: AppTypography.labelSmall.copyWith(
                               color: const Color(0xFF22D3EE),
                               fontWeight: FontWeight.w500,
-                              fontSize: 12,
+                              fontSize: 13,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -96,7 +96,7 @@ class FeaturedClassCard extends StatelessWidget {
                         Text(
                           upcomingClass?.title ?? 'Speaking with Confidence',
                           style: AppTypography.titleMedium.copyWith(
-                            fontSize: 16,
+                            fontSize: 17,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFF1A1B23),
                           ),
@@ -110,7 +110,7 @@ class FeaturedClassCard extends StatelessWidget {
                               : 'Instructor: Ms. Sarah • 4:00 PM',
                           style: AppTypography.bodySmall.copyWith(
                             color: const Color(0xFF434655),
-                            fontSize: 14,
+                            fontSize: 15,
                             fontWeight: FontWeight.w400,
                           ),
                           maxLines: 1,
@@ -141,7 +141,7 @@ class FeaturedClassCard extends StatelessWidget {
                     'Join Class',
                     style: AppTypography.buttonText.copyWith(
                       fontWeight: FontWeight.w700,
-                      fontSize: 14,
+                      fontSize: 15,
                       color: Colors.white,
                     ),
                   ),

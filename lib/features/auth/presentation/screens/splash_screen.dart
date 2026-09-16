@@ -190,7 +190,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                     child: Text(
                       'v1.0.0',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 11.0,
+                        fontSize: 11.5,
                         fontWeight: FontWeight.w500,
                         letterSpacing: 0.5,
                         color: const Color(0x660037B1), // rgba(0, 55, 177, 0.4)

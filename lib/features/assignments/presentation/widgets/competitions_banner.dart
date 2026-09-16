@@ -17,7 +17,7 @@ class CompetitionsBanner extends StatelessWidget {
         Text(
           'Upcoming Competitions',
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 20,
+            fontSize: 21.5,
             fontWeight: FontWeight.w600,
             color: const Color(0xFF1A1B23),
             height: 28 / 20,
@@ -84,14 +84,16 @@ class CompetitionsBanner extends StatelessWidget {
                                 fit: BoxFit.contain,
                               ),
                               const SizedBox(width: 8),
-                              Text(
-                                'COMPETITION',
-                                style: GoogleFonts.hankenGrotesk(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white.withValues(alpha: 0.9),
-                                  letterSpacing: 1.2,
-                                  height: 16 / 12,
+                              Flexible(
+                                child: Text(
+                                  'COMPETITION',
+                                  style: GoogleFonts.hankenGrotesk(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white.withValues(alpha: 0.9),
+                                    letterSpacing: 0.8,
+                                    height: 16 / 13,
+                                  ),
                                 ),
                               ),
                             ],
@@ -102,7 +104,7 @@ class CompetitionsBanner extends StatelessWidget {
                           Text(
                             'TrueLern\nGrandmaster Quiz',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 20,
+                              fontSize: 21.5,
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
                               height: 28 / 20,
@@ -114,7 +116,7 @@ class CompetitionsBanner extends StatelessWidget {
                           Text(
                             'Starts in 2 days • Win\nexclusive badges!',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 14,
+                              fontSize: 15,
                               fontWeight: FontWeight.w400,
                               color: Colors.white.withValues(alpha: 0.8),
                               height: 20 / 14,
@@ -137,7 +139,7 @@ class CompetitionsBanner extends StatelessWidget {
                           child: Text(
                             'Register Now',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 14,
+                              fontSize: 15,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xFF0037B1),
                               letterSpacing: 0.1,

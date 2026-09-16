@@ -51,7 +51,7 @@ class _ParentLearningProgressScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: const ParentHamburgerDrawer(activeItem: 'Learning Progress'),
+      drawer: const ParentHamburgerDrawer(),
       backgroundColor: Colors.white,
       body: Container(
         decoration: const BoxDecoration(
@@ -202,7 +202,7 @@ class _ParentLearningProgressScreenState
           'My Progress',
           textAlign: TextAlign.center,
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w700,
             color: const Color(0xFF1A1B23),
             height: 24 / 16,
@@ -221,7 +221,7 @@ class _ParentLearningProgressScreenState
             'Public Speaking & Communication',
             textAlign: TextAlign.center,
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w400,
               color: const Color(0xFF22D3EE),
               height: 24 / 16,
@@ -271,7 +271,7 @@ class _ParentLearningProgressScreenState
                         '72%',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 16,
+                          fontSize: 17,
                           fontWeight: FontWeight.w700,
                           color: const Color(0xFF0037B1),
                           height: 24 / 16,
@@ -281,7 +281,7 @@ class _ParentLearningProgressScreenState
                         'Overall Mastery',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 16,
+                          fontSize: 17,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xFF434655),
                           height: 24 / 16,
@@ -432,7 +432,7 @@ class _ParentLearningProgressScreenState
                         Text(
                           title,
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 16,
+                            fontSize: 17,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF1A1B23),
                             height: 24 / 16,
@@ -443,7 +443,7 @@ class _ParentLearningProgressScreenState
                         Text(
                           level,
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 16,
+                            fontSize: 17,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xFF434655),
                             height: 24 / 16,
@@ -457,7 +457,7 @@ class _ParentLearningProgressScreenState
                   Text(
                     percentage,
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 16,
+                      fontSize: 17,
                       fontWeight: FontWeight.w700,
                       color: accentColor,
                       height: 24 / 16,
@@ -525,7 +525,7 @@ class _ParentLearningProgressScreenState
             'View Detailed Report',
             textAlign: TextAlign.center,
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w400,
               color: Colors.white,
               height: 24 / 16,
@@ -658,7 +658,7 @@ class _ParentLearningProgressScreenState
             Text(
               label,
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 12,
+                fontSize: 13,
                 fontWeight: isActive ? FontWeight.w500 : FontWeight.w400,
                 color: color,
                 height: 16 / 12,

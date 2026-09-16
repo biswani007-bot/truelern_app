@@ -69,7 +69,7 @@ class MetricCard extends StatelessWidget {
               Text(
                 value ?? '—',
                 style: AppTypography.displayMedium.copyWith(
-                  fontSize: 26,
+                  fontSize: 28,
                   color: value != null ? AppColors.textPrimary : AppColors.textMuted,
                 ),
               ),

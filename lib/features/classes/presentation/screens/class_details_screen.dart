@@ -167,7 +167,7 @@ class ClassDetailsScreen extends ConsumerWidget {
           Text(
             'Back to My Classes',
             style: AppTypography.displayLarge.copyWith(
-              fontSize: 24,
+              fontSize: 25.5,
               fontWeight: FontWeight.w700,
               color: const Color(0xFF191C1E),
               letterSpacing: -0.5,
@@ -209,7 +209,7 @@ class ClassDetailsScreen extends ConsumerWidget {
               style: AppTypography.labelMedium.copyWith(
                 color: const Color(0xFF0891B2),
                 fontWeight: FontWeight.w600,
-                fontSize: 12,
+                fontSize: 13,
                 letterSpacing: 0.8,
               ),
             ),
@@ -221,7 +221,7 @@ class ClassDetailsScreen extends ConsumerWidget {
             title,
             style: AppTypography.bodyMedium.copyWith(
               color: const Color(0xFF1A1B23),
-              fontSize: 18,
+              fontSize: 19.5,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -244,7 +244,7 @@ class ClassDetailsScreen extends ConsumerWidget {
                   style: AppTypography.labelMedium.copyWith(
                     color: const Color(0xFF9A3412),
                     fontWeight: FontWeight.w700,
-                    fontSize: 12,
+                    fontSize: 13,
                     letterSpacing: 0.5,
                   ),
                 ),
@@ -346,7 +346,7 @@ class ClassDetailsScreen extends ConsumerWidget {
             label,
             style: AppTypography.bodySmall.copyWith(
               color: const Color(0xFF434655),
-              fontSize: 13,
+              fontSize: 14,
             ),
           ),
           const SizedBox(height: 2),
@@ -354,7 +354,7 @@ class ClassDetailsScreen extends ConsumerWidget {
             value,
             style: AppTypography.bodyMedium.copyWith(
               color: const Color(0xFF1A1B23),
-              fontSize: 14,
+              fontSize: 15,
               fontWeight: FontWeight.w600,
             ),
             maxLines: 2,
@@ -377,7 +377,7 @@ class ClassDetailsScreen extends ConsumerWidget {
               "Today's Focus",
               style: AppTypography.bodyMedium.copyWith(
                 color: const Color(0xFF1A1B23),
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -388,7 +388,7 @@ class ClassDetailsScreen extends ConsumerWidget {
           'Mastering vocal delivery techniques. We will explore how tone, pitch, and pacing can dramatically alter the impact of your message and help command attention.',
           style: AppTypography.bodyMedium.copyWith(
             color: const Color(0xFF434655),
-            fontSize: 14,
+            fontSize: 15,
             height: 1.6,
           ),
         ),
@@ -408,7 +408,7 @@ class ClassDetailsScreen extends ConsumerWidget {
               "What We'll Practice",
               style: AppTypography.bodyMedium.copyWith(
                 color: const Color(0xFF1A1B23),
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -458,7 +458,7 @@ class ClassDetailsScreen extends ConsumerWidget {
               label,
               style: AppTypography.bodyMedium.copyWith(
                 color: const Color(0xFF1A1B23),
-                fontSize: 13,
+                fontSize: 14,
                 fontWeight: FontWeight.w500,
                 height: 1.2,
               ),
@@ -484,7 +484,7 @@ class ClassDetailsScreen extends ConsumerWidget {
                 'Class is starting in 18 minutes',
                 style: AppTypography.bodyMedium.copyWith(
                   color: const Color(0xFF1A1B23),
-                  fontSize: 14,
+                  fontSize: 15,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -525,7 +525,7 @@ class ClassDetailsScreen extends ConsumerWidget {
                   style: AppTypography.labelMedium.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
-                    fontSize: 14,
+                    fontSize: 15,
                     letterSpacing: 0.5,
                   ),
                 ),

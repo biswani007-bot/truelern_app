@@ -88,7 +88,7 @@ class ChildContextBanner extends StatelessWidget {
                           '${children.length} wards',
                           style: AppTypography.labelSmall.copyWith(
                             color: AppColors.primary,
-                            fontSize: 10,
+                            fontSize: 11,
                           ),
                         ),
                       ),

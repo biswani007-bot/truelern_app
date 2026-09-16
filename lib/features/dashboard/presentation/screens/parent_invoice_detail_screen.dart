@@ -113,10 +113,10 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
           InkWell(
             borderRadius: BorderRadius.circular(9999),
             onTap: () {
-              if (Navigator.of(context).canPop()) {
-                Navigator.of(context).pop();
-              } else {
+              if (context.canPop()) {
                 context.pop();
+              } else {
+                context.go(AppRoutePaths.parentInvoices);
               }
             },
             child: Container(
@@ -135,7 +135,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
               child: Text(
                 'Invoice Detail',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 24,
+                  fontSize: 25.5,
                   fontWeight: FontWeight.w700,
                   height: 32 / 24,
                   color: const Color(0xFF191C1E),
@@ -245,7 +245,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
               Text(
                 'INVOICE NUMBER',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.normal,
                   letterSpacing: 0.8,
                   height: 24 / 16,
@@ -256,7 +256,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
               Text(
                 '#TL-2026-0018',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.normal,
                   height: 24 / 16,
                   color: const Color(0xFF1A1B23),
@@ -285,7 +285,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
                 Text(
                   'Unpaid',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.normal,
                     height: 24 / 16,
                     color: const Color(0xFF1A1B23),
@@ -311,7 +311,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
               Text(
                 'Issued Date',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.normal,
                   height: 24 / 16,
                   color: const Color(0xFF747686),
@@ -320,7 +320,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
               Text(
                 'Aug 15, 2026',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.w500,
                   height: 24 / 16,
                   color: const Color(0xFF434655),
@@ -338,7 +338,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
               Text(
                 'Due Date',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.normal,
                   height: 24 / 16,
                   color: const Color(0xFF747686),
@@ -347,7 +347,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
               Text(
                 'Sep 15, 2026',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.w500,
                   height: 24 / 16,
                   color: const Color(0xFF434655),
@@ -380,7 +380,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
           Text(
             'Billed To',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.normal,
               height: 24 / 16,
               color: const Color(0xFF747686),
@@ -390,7 +390,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
           Text(
             'Sarah Jenkins',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.normal,
               height: 24 / 16,
               color: const Color(0xFF1A1B23),
@@ -412,7 +412,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
           Text(
             'Student & Program',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.normal,
               height: 24 / 16,
               color: const Color(0xFF747686),
@@ -434,7 +434,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
                 child: Text(
                   'M',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -449,7 +449,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
                   Text(
                     'Mia',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 16,
+                      fontSize: 17,
                       fontWeight: FontWeight.normal,
                       height: 20 / 16,
                       color: const Color(0xFF1A1B23),
@@ -477,7 +477,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
                         Text(
                           'Emotional Intelligence',
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 16,
+                            fontSize: 17,
                             fontWeight: FontWeight.normal,
                             height: 24 / 16,
                             color: const Color(0xFFFB7185),
@@ -526,7 +526,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
                 Text(
                   'Discount',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.normal,
                     height: 24 / 16,
                     color: const Color(0xFFFB7185),
@@ -537,7 +537,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
             Text(
               '-\$50.00',
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: FontWeight.normal,
                 height: 24 / 16,
                 color: const Color(0xFFFB7185),
@@ -601,7 +601,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
         Text(
           label,
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.normal,
             height: 24 / 16,
             color: labelColor,
@@ -610,7 +610,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
         Text(
           value,
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.normal,
             height: 24 / 16,
             color: valueColor,
@@ -639,7 +639,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
           Text(
             'Balance Due',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.normal,
               height: 24 / 16,
               color: const Color(0xFF0037B1),
@@ -648,7 +648,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
           Text(
             '\$149.00',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.bold,
               height: 24 / 16,
               color: const Color(0xFF0037B1),
@@ -725,7 +725,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
                       Text(
                         'Pay \$149.00',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 16,
+                          fontSize: 17,
                           fontWeight: FontWeight.bold,
                           height: 24 / 16,
                           color: Colors.white,
@@ -768,7 +768,7 @@ class ParentInvoiceDetailScreen extends StatelessWidget {
                       Text(
                         'Download Invoice',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 16,
+                          fontSize: 17,
                           fontWeight: FontWeight.bold,
                           height: 24 / 16,
                           color: const Color(0xFF434655),

@@ -182,7 +182,7 @@ class TopicDetailScreen extends ConsumerWidget {
           child: Text(
             'Communication',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 12,
+              fontSize: 13,
               fontWeight: FontWeight.w500,
               color: const Color(0xFF22D3EE),
               height: 16 / 12,
@@ -197,7 +197,7 @@ class TopicDetailScreen extends ConsumerWidget {
           'Speaking With Confidence',
           textAlign: TextAlign.center,
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 28,
+            fontSize: 30,
             fontWeight: FontWeight.w700,
             color: const Color(0xFF1A1B23),
             height: 36 / 28,
@@ -213,7 +213,7 @@ class TopicDetailScreen extends ConsumerWidget {
           'and impact.',
           textAlign: TextAlign.center,
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w400,
             color: const Color(0xFF434655),
             height: 24 / 16,
@@ -279,7 +279,7 @@ class TopicDetailScreen extends ConsumerWidget {
                           Text(
                             'Live Class',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 16,
+                              fontSize: 17,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFF1A1B23),
                               height: 24 / 16,
@@ -290,7 +290,7 @@ class TopicDetailScreen extends ConsumerWidget {
                           Text(
                             'Tomorrow, 7:00 PM',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 12,
+                              fontSize: 13,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFF0037B1),
                               height: 16 / 12,
@@ -314,7 +314,7 @@ class TopicDetailScreen extends ConsumerWidget {
                   Text(
                     'Join Instructor Sarah for an interactive session on\nvocal projection techniques.',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF434655),
                       height: 20 / 14,
@@ -361,7 +361,7 @@ class TopicDetailScreen extends ConsumerWidget {
                   Text(
                     'Practice',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 16,
+                      fontSize: 17,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFF1A1B23),
                       height: 24 / 16,
@@ -371,7 +371,7 @@ class TopicDetailScreen extends ConsumerWidget {
                   Text(
                     'Self-paced modules',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 12,
+                      fontSize: 13,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFF434655),
                       height: 16 / 12,
@@ -439,7 +439,7 @@ class TopicDetailScreen extends ConsumerWidget {
                     child: Text(
                       'Start Practice',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 14,
+                        fontSize: 15,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFF1A1B23),
                         letterSpacing: 0.1,
@@ -487,7 +487,7 @@ class TopicDetailScreen extends ConsumerWidget {
             Text(
               label,
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 10,
+                fontSize: 11,
                 fontWeight: FontWeight.w400,
                 color: const Color(0xFF434655),
                 height: 15 / 10,
@@ -538,7 +538,7 @@ class TopicDetailScreen extends ConsumerWidget {
                       Text(
                         'Assignment',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 16,
+                          fontSize: 17,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFF1A1B23),
                           height: 24 / 16,
@@ -549,7 +549,7 @@ class TopicDetailScreen extends ConsumerWidget {
                       Text(
                         'Due in 3 days',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: FontWeight.w700,
                           color: const Color(0xFF9333EA),
                           height: 16 / 12,
@@ -573,7 +573,7 @@ class TopicDetailScreen extends ConsumerWidget {
               Text(
                 'Record a 2-minute reflection on a recent\nconversation where you felt confident.',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 14,
+                  fontSize: 15,
                   fontWeight: FontWeight.w400,
                   color: const Color(0xFF434655),
                   height: 20 / 14,
@@ -609,7 +609,7 @@ class TopicDetailScreen extends ConsumerWidget {
                           Text(
                             'Submit Reflection',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 14,
+                              fontSize: 15,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xFF1A1B23),
                               letterSpacing: 0.1,
@@ -664,7 +664,7 @@ class TopicDetailScreen extends ConsumerWidget {
                   Text(
                     'Topic Progress',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 16,
+                      fontSize: 17,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFF1A1B23),
                       height: 24 / 16,
@@ -675,7 +675,7 @@ class TopicDetailScreen extends ConsumerWidget {
                   Text(
                     'Keep it up!',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 12,
+                      fontSize: 13,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFF434655),
                       height: 16 / 12,
@@ -717,7 +717,7 @@ class TopicDetailScreen extends ConsumerWidget {
                     TextSpan(
                       text: '%',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 24,
+                        fontSize: 25.5,
                         fontWeight: FontWeight.w700,
                         color: const Color(0xFF434655),
                         height: 32 / 24,
@@ -733,7 +733,7 @@ class TopicDetailScreen extends ConsumerWidget {
                 child: Text(
                   'Completed',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 12,
+                    fontSize: 13,
                     fontWeight: FontWeight.w500,
                     color: const Color(0xFF434655),
                     height: 16 / 12,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/router/route_paths.dart';
+import '../widgets/parent_hamburger_drawer.dart';
 
 /// Parent Login & Devices Screen — PURE FRONTEND ONLY.
 ///
@@ -36,6 +38,7 @@ class ParentLoginDevicesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: const Key('parent_login_devices_screen'),
+      drawer: const ParentHamburgerDrawer(),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -122,10 +125,10 @@ class ParentLoginDevicesScreen extends StatelessWidget {
           InkWell(
             borderRadius: BorderRadius.circular(9999),
             onTap: () {
-              if (Navigator.of(context).canPop()) {
-                Navigator.of(context).pop();
-              } else {
+              if (context.canPop()) {
                 context.pop();
+              } else {
+                context.go(AppRoutePaths.parentSecurityPrivacy);
               }
             },
             child: Container(
@@ -144,7 +147,7 @@ class ParentLoginDevicesScreen extends StatelessWidget {
               child: Text(
                 'TrueLern',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 24,
+                  fontSize: 25.5,
                   fontWeight: FontWeight.w700,
                   height: 32 / 24,
                   color: const Color(0xFF191C1E),
@@ -170,7 +173,7 @@ class ParentLoginDevicesScreen extends StatelessWidget {
             'Login & Devices',
             textAlign: TextAlign.center,
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w500,
               height: 24 / 16,
               color: const Color(0xFF1A1B23),
@@ -183,7 +186,7 @@ class ParentLoginDevicesScreen extends StatelessWidget {
             'Manage the devices that are currently logged into\nyour account.',
             textAlign: TextAlign.center,
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.normal,
               height: 24 / 16,
               color: const Color(0xFF434655),
@@ -205,7 +208,7 @@ class ParentLoginDevicesScreen extends StatelessWidget {
           child: Text(
             'CURRENT DEVICE',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.normal,
               letterSpacing: 0.8,
               height: 24 / 16,
@@ -259,7 +262,7 @@ class ParentLoginDevicesScreen extends StatelessWidget {
                           TextSpan(
                             text: 'Pixel 8 Pro ',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 16,
+                              fontSize: 17,
                               fontWeight: FontWeight.normal,
                               height: 24 / 16,
                               color: const Color(0xFF1A1B23),
@@ -268,7 +271,7 @@ class ParentLoginDevicesScreen extends StatelessWidget {
                           TextSpan(
                             text: '(This device)',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 16,
+                              fontSize: 17,
                               fontWeight: FontWeight.normal,
                               height: 24 / 16,
                               color: const Color(0xFF434655),
@@ -294,7 +297,7 @@ class ParentLoginDevicesScreen extends StatelessWidget {
                         Text(
                           'Active Now',
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 16,
+                            fontSize: 17,
                             fontWeight: FontWeight.normal,
                             height: 24 / 16,
                             color: const Color(0xFF10B981),
@@ -323,7 +326,7 @@ class ParentLoginDevicesScreen extends StatelessWidget {
           child: Text(
             'OTHER ACTIVE DEVICES',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.normal,
               letterSpacing: 0.8,
               height: 24 / 16,
@@ -410,7 +413,7 @@ class ParentLoginDevicesScreen extends StatelessWidget {
                 Text(
                   deviceName,
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.normal,
                     height: 24 / 16,
                     color: const Color(0xFF1A1B23),
@@ -420,7 +423,7 @@ class ParentLoginDevicesScreen extends StatelessWidget {
                 Text(
                   lastActive,
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.normal,
                     height: 24 / 16,
                     color: const Color(0xFF747686),
@@ -500,7 +503,7 @@ class ParentLoginDevicesScreen extends StatelessWidget {
             'Sign out all other devices',
             textAlign: TextAlign.center,
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.normal,
               height: 24 / 16,
               color: const Color(0xFFBA1A1A),

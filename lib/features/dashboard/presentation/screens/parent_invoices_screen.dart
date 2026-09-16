@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/router/route_paths.dart';
+import '../widgets/parent_hamburger_drawer.dart';
 
 /// Parent Invoices Screen — PURE FRONTEND ONLY.
 ///
@@ -42,6 +43,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: const Key('parent_invoices_screen'),
+      drawer: const ParentHamburgerDrawer(),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -145,7 +147,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
               child: Text(
                 'Invoices',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 24,
+                  fontSize: 25.5,
                   fontWeight: FontWeight.w700,
                   height: 32 / 24,
                   color: const Color(0xFF191C1E),
@@ -213,7 +215,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                   Text(
                     'OUTSTANDING BALANCE',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 12,
+                      fontSize: 13,
                       fontWeight: FontWeight.w500,
                       letterSpacing: 0.6,
                       height: 16 / 12,
@@ -264,7 +266,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                             Text(
                               'NEXT PAYMENT',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 12,
+                                fontSize: 13,
                                 fontWeight: FontWeight.w500,
                                 letterSpacing: 0.3,
                                 height: 16 / 12,
@@ -283,7 +285,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                             Text(
                               'Sep 15',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 20,
+                                fontSize: 21.5,
                                 fontWeight: FontWeight.w600,
                                 height: 28 / 20,
                                 color: const Color(0xFF1A1B23),
@@ -292,7 +294,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                             Text(
                               '(\$149.50)',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 16,
+                                fontSize: 17,
                                 fontWeight: FontWeight.w600,
                                 height: 24 / 16,
                                 color: const Color(0xFF747686),
@@ -359,7 +361,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                 child: Text(
                   filters[index],
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w500,
                     letterSpacing: 0.1,
                     height: 20 / 14,
@@ -448,7 +450,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                         Text(
                           'Mia',
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 16,
+                            fontSize: 17,
                             fontWeight: FontWeight.w600,
                             height: 24 / 16,
                             color: const Color(0xFF1A1B23),
@@ -466,7 +468,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                           child: Text(
                             'DUE',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 10,
+                              fontSize: 11,
                               fontWeight: FontWeight.w700,
                               letterSpacing: 0.25,
                               height: 15 / 10,
@@ -480,7 +482,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                     Text(
                       'Emotional Intelligence',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 14,
+                        fontSize: 15,
                         fontWeight: FontWeight.normal,
                         height: 20 / 14,
                         color: const Color(0xFF434655),
@@ -494,7 +496,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
               Text(
                 '\$149.50',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 20,
+                  fontSize: 21.5,
                   fontWeight: FontWeight.w600,
                   height: 28 / 20,
                   color: const Color(0xFF1A1B23),
@@ -520,7 +522,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                 Text(
                   'Invoice #TL-2026-0018',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 12,
+                    fontSize: 13,
                     fontWeight: FontWeight.w500,
                     height: 16 / 12,
                     color: const Color(0xFF747686),
@@ -541,7 +543,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                     Text(
                       'Due: Sep 15, 2026',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w500,
                         height: 16 / 12,
                         color: const Color(0xFFBA1A1A),
@@ -571,7 +573,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                         Text(
                           'View Invoice',
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 14,
+                            fontSize: 15,
                             fontWeight: FontWeight.w500,
                             letterSpacing: 0.1,
                             height: 20 / 14,
@@ -652,7 +654,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                         Text(
                           'Mia',
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 16,
+                            fontSize: 17,
                             fontWeight: FontWeight.w600,
                             height: 24 / 16,
                             color: const Color(0xFF1A1B23),
@@ -670,7 +672,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                           child: Text(
                             'PAID',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 10,
+                              fontSize: 11,
                               fontWeight: FontWeight.w700,
                               letterSpacing: 0.25,
                               height: 15 / 10,
@@ -684,7 +686,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                     Text(
                       'Communication & Public\nSpeaking',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 14,
+                        fontSize: 15,
                         fontWeight: FontWeight.normal,
                         height: 20 / 14,
                         color: const Color(0xFF434655),
@@ -698,7 +700,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
               Text(
                 '\$299.00',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 20,
+                  fontSize: 21.5,
                   fontWeight: FontWeight.w600,
                   height: 28 / 20,
                   color: const Color(0xFF1A1B23),
@@ -724,7 +726,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                 Text(
                   'Invoice #TL-2026-0012',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 12,
+                    fontSize: 13,
                     fontWeight: FontWeight.w500,
                     height: 16 / 12,
                     color: const Color(0xFF747686),
@@ -745,7 +747,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                     Text(
                       'Paid: Aug 15, 2026',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w500,
                         height: 16 / 12,
                         color: const Color(0xFF10B981),
@@ -779,7 +781,7 @@ class _ParentInvoicesScreenState extends State<ParentInvoicesScreen> {
                         Text(
                           'View Invoice',
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 14,
+                            fontSize: 15,
                             fontWeight: FontWeight.w500,
                             letterSpacing: 0.1,
                             height: 20 / 14,

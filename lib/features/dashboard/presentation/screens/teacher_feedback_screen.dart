@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/router/route_paths.dart';
+import '../widgets/parent_hamburger_drawer.dart';
 
 /// Teacher Feedback (Revised) Screen — PURE STATIC FRONTEND ONLY.
 ///
@@ -27,6 +28,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
     return Scaffold(
       key: const Key('teacher_feedback_screen'),
       backgroundColor: Colors.white,
+      drawer: const ParentHamburgerDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -144,7 +146,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
                   errorBuilder: (context, error, stackTrace) => Text(
                     'TrueLern',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 22,
+                      fontSize: 23.5,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF0037B1),
                     ),
@@ -189,7 +191,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
             Text(
               'DESIGN THINKING PROJECT',
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 12,
+                fontSize: 13,
                 fontWeight: FontWeight.w500,
                 color: const Color(0xFF747686),
                 letterSpacing: 0.6,
@@ -205,7 +207,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
               child: Text(
                 'REVIEWED',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 12,
+                  fontSize: 13,
                   fontWeight: FontWeight.w700,
                   color: const Color(0xFF0037B1),
                   height: 16 / 12,
@@ -220,7 +222,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
         Text(
           'Build a Sustainable City Model',
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 28,
+            fontSize: 30,
             fontWeight: FontWeight.w700,
             color: const Color(0xFF1A1B23),
             height: 36 / 28,
@@ -232,7 +234,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
         Text(
           'Submitted on Oct 24, 2023',
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w400,
             color: const Color(0xFF434655),
             height: 24 / 16,
@@ -324,7 +326,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
                           Text(
                             'Feedback from Ms. Sarah',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 16,
+                              fontSize: 17,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFF1A1B23),
                               height: 24 / 16,
@@ -334,7 +336,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
                           Text(
                             'Lead Instructor, Practical Thinking',
                             style: GoogleFonts.hankenGrotesk(
-                              fontSize: 14,
+                              fontSize: 15,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xFF747686),
                               height: 20 / 14,
@@ -357,7 +359,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
                             Text(
                               '95',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 28,
+                                fontSize: 30,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xFF0037B1),
                                 height: 36 / 28,
@@ -366,7 +368,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
                             Text(
                               '/100',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 18,
+                                fontSize: 19.5,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xFF747686),
                                 height: 28 / 18,
@@ -379,7 +381,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
                           'Excellent\nScore!',
                           textAlign: TextAlign.right,
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 12,
+                            fontSize: 13,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFF434655),
                             height: 16 / 12,
@@ -406,7 +408,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
                   child: Text(
                     '"Exceptional work on the sustainable city model! Your integration of renewable energy sources was highly innovative. You clearly demonstrated a strong grasp of practical problem-solving. Next time, try to expand more on the economic impact of the solar grids."',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 16,
+                      fontSize: 17,
                       fontWeight: FontWeight.w400,
                       fontStyle: FontStyle.italic,
                       color: const Color(0xFF1A1B23),
@@ -430,7 +432,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
         Text(
           'Skill Impact',
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 20,
+            fontSize: 21.5,
             fontWeight: FontWeight.w600,
             color: const Color(0xFF1A1B23),
             height: 28 / 20,
@@ -519,7 +521,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
                 Text(
                   title,
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.w600,
                     color: const Color(0xFF1A1B23),
                     height: 24 / 16,
@@ -567,7 +569,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
             child: Text(
               percentString,
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: FontWeight.w600,
                 color: color,
                 height: 24 / 16,
@@ -606,7 +608,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
         child: Text(
           'CONTINUE LEARNING',
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w600,
             color: Colors.white,
             letterSpacing: 0.5,
@@ -691,7 +693,7 @@ class TeacherFeedbackScreen extends StatelessWidget {
                         item.label,
                         style: GoogleFonts.hankenGrotesk(
                           color: color,
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: item.isActive ? FontWeight.w600 : FontWeight.w500,
                           height: 16 / 12,
                         ),

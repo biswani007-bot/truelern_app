@@ -93,7 +93,7 @@ class ClassesEventCard extends StatelessWidget {
                         title,
                         style: AppTypography.bodyMedium.copyWith(
                           color: const Color(0xFF0F172A),
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w600,
                           height: 1.3,
                         ),
@@ -105,7 +105,7 @@ class ClassesEventCard extends StatelessWidget {
                         timing,
                         style: AppTypography.bodySmall.copyWith(
                           color: const Color(0xFF475569),
-                          fontSize: 13,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                         maxLines: 1,

@@ -54,7 +54,7 @@ class EmptyClassesWidget extends StatelessWidget {
               title,
               style: AppTypography.titleLarge.copyWith(
                 color: AppColors.textPrimary,
-                fontSize: 18,
+                fontSize: 19.5,
               ),
               textAlign: TextAlign.center,
             ),

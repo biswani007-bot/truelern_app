@@ -73,7 +73,7 @@ class BentoSnapshotGrid extends StatelessWidget {
                   style: AppTypography.labelSmall.copyWith(
                     color: const Color(0xFF10B981),
                     fontWeight: FontWeight.w400,
-                    fontSize: 16,
+                    fontSize: 17,
                   ),
                 ),
               ),
@@ -100,7 +100,7 @@ class BentoSnapshotGrid extends StatelessWidget {
                   style: AppTypography.labelSmall.copyWith(
                     color: const Color(0xFF434655),
                     fontWeight: FontWeight.w400,
-                    fontSize: 16,
+                    fontSize: 17,
                   ),
                 ),
               ),
@@ -194,7 +194,7 @@ class _BentoCard extends StatelessWidget {
                   style: AppTypography.labelSmall.copyWith(
                     color: labelColor ?? const Color(0xFF434655),
                     fontWeight: FontWeight.w600,
-                    fontSize: 16,
+                    fontSize: 17,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -206,7 +206,7 @@ class _BentoCard extends StatelessWidget {
             Text(
               value,
               style: AppTypography.titleSmall.copyWith(
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: FontWeight.w600,
                 color: valueColor ?? const Color(0xFF1A1B23),
                 height: 1.2,
@@ -218,7 +218,7 @@ class _BentoCard extends StatelessWidget {
             Text(
               value,
               style: AppTypography.displayMedium.copyWith(
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: FontWeight.w700,
                 color: valueColor ?? const Color(0xFF1A1B23),
                 height: 1.0,

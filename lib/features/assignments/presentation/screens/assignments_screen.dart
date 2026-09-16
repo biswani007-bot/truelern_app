@@ -169,7 +169,7 @@ class _AssignmentsScreenState extends ConsumerState<AssignmentsScreen> {
           Text(
             'My Assignments',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 24,
+              fontSize: 25.5,
               fontWeight: FontWeight.w700,
               color: const Color(0xFF191C1E),
               height: 32 / 24,
@@ -249,7 +249,7 @@ class _AssignmentsScreenState extends ConsumerState<AssignmentsScreen> {
                   child: Text(
                     filter,
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.w500,
                       color: isSelected ? Colors.white : const Color(0xFF434655),
                       letterSpacing: 0.1,
@@ -283,7 +283,7 @@ class _AssignmentsScreenState extends ConsumerState<AssignmentsScreen> {
           child: Text(
             state.message,
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 14,
+              fontSize: 15,
               color: const Color(0xFFBA1A1A),
             ),
           ),
@@ -310,7 +310,7 @@ class _AssignmentsScreenState extends ConsumerState<AssignmentsScreen> {
             Text(
               'No assignments found',
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: FontWeight.w600,
                 color: const Color(0xFF1A1B23),
               ),

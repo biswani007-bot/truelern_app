@@ -157,7 +157,7 @@ class ClassSummaryScreen extends ConsumerWidget {
                   errorBuilder: (context, error, stackTrace) => Text(
                     'TrueLern',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 22,
+                      fontSize: 23.5,
                       fontWeight: FontWeight.w800,
                       color: const Color(0xFF0037B1),
                     ),
@@ -208,7 +208,7 @@ class ClassSummaryScreen extends ConsumerWidget {
           'Class Completed',
           textAlign: TextAlign.center,
           style: GoogleFonts.hankenGrotesk(
-            fontSize: 28,
+            fontSize: 30,
             fontWeight: FontWeight.w700,
             color: const Color(0xFF1A1B23),
             letterSpacing: -0.7,
@@ -219,8 +219,10 @@ class ClassSummaryScreen extends ConsumerWidget {
 
         // Key Details Chips (Node 76:2261)
         // Row 1: [Attended] [42 / 45 minutes]
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 10,
+          runSpacing: 8,
           children: [
             // Chip 1: Attended (Node 76:2262)
             ClipRRect(
@@ -228,7 +230,7 @@ class ClassSummaryScreen extends ConsumerWidget {
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 0.6),
                     borderRadius: BorderRadius.circular(9999),
@@ -260,7 +262,7 @@ class ClassSummaryScreen extends ConsumerWidget {
                       Text(
                         'Attended',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFF4F46E5),
                           letterSpacing: 0.1,
@@ -272,7 +274,6 @@ class ClassSummaryScreen extends ConsumerWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 10),
 
             // Chip 2: 42 / 45 minutes (Node 76:2267)
             ClipRRect(
@@ -280,7 +281,7 @@ class ClassSummaryScreen extends ConsumerWidget {
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 0.6),
                     borderRadius: BorderRadius.circular(9999),
@@ -312,7 +313,7 @@ class ClassSummaryScreen extends ConsumerWidget {
                       Text(
                         '42 / 45 minutes',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w500,
                           color: const Color(0xFF434655),
                           letterSpacing: 0.1,
@@ -368,7 +369,7 @@ class ClassSummaryScreen extends ConsumerWidget {
                     Text(
                       'Teacher: Sarah',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 14,
+                        fontSize: 15,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFF434655),
                         letterSpacing: 0.1,
@@ -418,7 +419,7 @@ class ClassSummaryScreen extends ConsumerWidget {
           child: Text(
             'WHAT WE PRACTICED',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w600,
               color: const Color(0xFF434655),
               height: 24 / 16,
@@ -485,7 +486,7 @@ class ClassSummaryScreen extends ConsumerWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 14,
+                        fontSize: 15,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFF1A1B23),
                         letterSpacing: 0.1,
@@ -513,7 +514,7 @@ class ClassSummaryScreen extends ConsumerWidget {
           child: Text(
             'NEXT STEPS',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w600,
               color: const Color(0xFF434655),
               height: 24 / 16,
@@ -571,7 +572,7 @@ class ClassSummaryScreen extends ConsumerWidget {
                     Text(
                       'Next Live Class',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFF1A1B23),
                         height: 24 / 16,
@@ -581,7 +582,7 @@ class ClassSummaryScreen extends ConsumerWidget {
                     Text(
                       'Tomorrow, 7 PM',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 14,
+                        fontSize: 15,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xFF434655),
                         height: 20 / 14,
@@ -659,7 +660,7 @@ class ClassSummaryScreen extends ConsumerWidget {
                         Text(
                           'Assignment',
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 16,
+                            fontSize: 17,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF1A1B23),
                             height: 24 / 16,
@@ -681,7 +682,7 @@ class ClassSummaryScreen extends ConsumerWidget {
                             Text(
                               'Due Friday',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 14,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xFFBA1A1A),
                                 height: 20 / 14,
@@ -755,7 +756,7 @@ class ClassSummaryScreen extends ConsumerWidget {
               Text(
                 'VIEW ASSIGNMENT',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 18,
+                  fontSize: 19.5,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
                   letterSpacing: 0.5,

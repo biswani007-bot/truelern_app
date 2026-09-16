@@ -35,6 +35,7 @@ import '../../features/dashboard/presentation/screens/parent_achievements_screen
 import '../../features/dashboard/presentation/screens/parent_learning_progress_screen.dart';
 import '../../features/dashboard/presentation/screens/parent_shell_screen.dart';
 import '../../features/dashboard/presentation/screens/teacher_feedback_screen.dart';
+import '../../features/dashboard/presentation/screens/demo_booking_dashboard_screen.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_typography.dart';
 import 'route_names.dart';
@@ -108,6 +109,7 @@ class RouterNotifier extends ChangeNotifier {
     final isSplash = location == AppRoutePaths.splash || isRoot;
     final isOnboarding = location == AppRoutePaths.onboarding;
     final isLogin = location == AppRoutePaths.login;
+    final isDemoDashboard = location == AppRoutePaths.demoBookingDashboard;
     final isAuthenticated = authState is Authenticated;
 
     // 1. Splash lifecycle: allow initialization to complete uninterrupted
@@ -117,7 +119,7 @@ class RouterNotifier extends ChangeNotifier {
 
     // 2. Unauthenticated access prevention:
     // If not authenticated and attempting to access any protected area, redirect to /login.
-    if (!isAuthenticated && !isLogin && !isSplash && !isOnboarding) {
+    if (!isAuthenticated && !isLogin && !isSplash && !isOnboarding && !isDemoDashboard) {
       return AppRoutePaths.login;
     }
 
@@ -188,6 +190,13 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: AppRoutePaths.login,
         name: AppRouteNames.login,
         builder: (context, state) => const LoginScreen(),
+      ),
+
+      // 2c. Demo Booking Dashboard Route (Node 72:477)
+      GoRoute(
+        path: AppRoutePaths.demoBookingDashboard,
+        name: AppRouteNames.demoBookingDashboard,
+        builder: (context, state) => const DemoBookingDashboardScreen(),
       ),
 
       // 2b. Parent Alias Route (redirects /parent to /parent/dashboard)

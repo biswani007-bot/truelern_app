@@ -128,9 +128,9 @@ class _ParentShellScreenState extends ConsumerState<ParentShellScreen> {
                         tab.label,
                         style: GoogleFonts.hankenGrotesk(
                           color: color,
-                          fontSize: 12,
+                          fontSize: 14,
                           fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
-                          height: 16 / 12,
+                          height: 16 / 13,
                         ),
                       ),
                     ],

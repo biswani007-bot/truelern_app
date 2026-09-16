@@ -8,6 +8,7 @@ abstract final class AppRoutePaths {
   static const String onboarding = '/onboarding';
   static const String login = '/login';
   static const String verifyOtp = '/verify-otp';
+  static const String demoBookingDashboard = '/demo-booking-dashboard';
 
   // Parent Tab Paths — top-level absolute paths for StatefulShellRoute branches
   static const String parent = '/parent';

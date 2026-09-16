@@ -77,7 +77,7 @@ class ClassesStudentSelector extends StatelessWidget {
                   activeChild.firstName.isNotEmpty ? activeChild.firstName : 'Student',
                   style: AppTypography.labelLarge.copyWith(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -106,7 +106,7 @@ class ClassesStudentSelector extends StatelessWidget {
         style: const TextStyle(
           color: Color(0xFF0037B1),
           fontWeight: FontWeight.w700,
-          fontSize: 12,
+          fontSize: 13,
         ),
       ),
     );

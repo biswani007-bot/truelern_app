@@ -67,6 +67,13 @@ class AuthController extends Notifier<AuthState> {
     }
   }
 
+  /// Sets a frontend-only demo session for UI prototype flows without backend/network calls.
+  void setDemoSession() {
+    state = const Authenticated(
+      accessToken: 'static_demo_token_prototype',
+    );
+  }
+
   /// Terminates session and clears persisted tokens.
   Future<void> logout() async {
     await _repository.logout();

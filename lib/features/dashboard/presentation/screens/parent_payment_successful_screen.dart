@@ -142,7 +142,7 @@ class ParentPaymentSuccessfulScreen extends StatelessWidget {
               'Payment Successful',
               textAlign: TextAlign.center,
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 24,
+                fontSize: 25.5,
                 fontWeight: FontWeight.w600,
                 height: 32 / 24,
                 color: const Color(0xFF1A1B23),
@@ -159,7 +159,7 @@ class ParentPaymentSuccessfulScreen extends StatelessWidget {
               '\$149.50 for Invoice #TL-2026-0018\npaid successfully.',
               textAlign: TextAlign.center,
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: FontWeight.w400,
                 height: 24 / 16,
                 color: const Color(0xFF434655),
@@ -199,7 +199,7 @@ class ParentPaymentSuccessfulScreen extends StatelessWidget {
                       child: Text(
                         'Back to Invoices',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w500,
                           height: 20 / 14,
                           color: Colors.white,
@@ -238,7 +238,7 @@ class ParentPaymentSuccessfulScreen extends StatelessWidget {
                       child: Text(
                         'View Receipt',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w500,
                           height: 20 / 14,
                           color: const Color(0xFF0037B1),

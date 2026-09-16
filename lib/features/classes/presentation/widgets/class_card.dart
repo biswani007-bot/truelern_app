@@ -81,7 +81,7 @@ class ClassCard extends StatelessWidget {
                 Text(
                   session.title.isNotEmpty ? session.title : 'Live Session',
                   style: AppTypography.titleMedium.copyWith(
-                    fontSize: 16,
+                    fontSize: 17,
                     color: AppColors.textPrimary,
                   ),
                   maxLines: 2,
@@ -133,7 +133,7 @@ class ClassCard extends StatelessWidget {
                                     style: AppTypography.labelSmall.copyWith(
                                       color: AppColors.primary,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 10,
+                                      fontSize: 11,
                                     ),
                                   )
                                 : null,

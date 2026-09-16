@@ -127,7 +127,7 @@ class _ParentDashboardScreenState
                         Text(
                           'Hi, ${_activeChild.firstName}! Let\'s go on today\'s adventure!',
                           style: AppTypography.displayLarge.copyWith(
-                            fontSize: 28,
+                            fontSize: 30,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFF1A1B23),
                             letterSpacing: -0.5,
@@ -188,7 +188,7 @@ class _ParentDashboardScreenState
           Text(
             'Dashboard',
             style: AppTypography.displayLarge.copyWith(
-              fontSize: 24,
+              fontSize: 25.5,
               fontWeight: FontWeight.w700,
               color: const Color(0xFF1A1B23),
               letterSpacing: -0.5,

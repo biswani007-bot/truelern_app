@@ -58,7 +58,10 @@ class AssignmentCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Status & Topic Badges
-            Row(
+            Wrap(
+              spacing: 8,
+              runSpacing: 4,
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 // PENDING badge (Node 76:1992)
                 Container(
@@ -70,7 +73,7 @@ class AssignmentCard extends StatelessWidget {
                   child: Text(
                     'PENDING',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 12,
+                      fontSize: 13,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFF434655),
                       letterSpacing: 0.3,
@@ -78,7 +81,6 @@ class AssignmentCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(width: 12),
                 // Topic badge (Node 76:1994)
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
@@ -89,7 +91,7 @@ class AssignmentCard extends StatelessWidget {
                   child: Text(
                     assignment.topic,
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 12,
+                      fontSize: 13,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFFA855F7),
                       height: 16 / 12,
@@ -104,7 +106,7 @@ class AssignmentCard extends StatelessWidget {
             Text(
               assignment.title,
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 20,
+                fontSize: 21.5,
                 fontWeight: FontWeight.w600,
                 color: const Color(0xFF1A1B23),
                 height: 28 / 20,
@@ -125,7 +127,7 @@ class AssignmentCard extends StatelessWidget {
                   Text(
                     assignment.dueDate!,
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF434655),
                       height: 20 / 14,
@@ -155,7 +157,7 @@ class AssignmentCard extends StatelessWidget {
                 child: Text(
                   assignment.buttonText ?? 'Open Assignment',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w500,
                     letterSpacing: 0.1,
                     height: 20 / 14,
@@ -220,7 +222,10 @@ class AssignmentCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Status & Topic Badges
-                  Row(
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 4,
+                    crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       // COMPLETED badge (Node 76:2010)
                       Container(
@@ -241,7 +246,7 @@ class AssignmentCard extends StatelessWidget {
                             Text(
                               'COMPLETED',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 12,
+                                fontSize: 13,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xFF10B981),
                                 letterSpacing: 0.3,
@@ -251,7 +256,6 @@ class AssignmentCard extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(width: 12),
                       // Topic badge (Node 76:2014)
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
@@ -262,7 +266,7 @@ class AssignmentCard extends StatelessWidget {
                         child: Text(
                           assignment.topic,
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 12,
+                            fontSize: 13,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFF22D3EE),
                             height: 16 / 12,
@@ -277,7 +281,7 @@ class AssignmentCard extends StatelessWidget {
                   Text(
                     assignment.title,
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 20,
+                      fontSize: 21.5,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFF1A1B23),
                       height: 28 / 20,
@@ -298,7 +302,7 @@ class AssignmentCard extends StatelessWidget {
                         Text(
                           'Grade:',
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 14,
+                            fontSize: 15,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFF434655),
                             letterSpacing: 0.1,
@@ -309,7 +313,7 @@ class AssignmentCard extends StatelessWidget {
                         Text(
                           '${assignment.score ?? 95}/${assignment.totalMarks ?? 100}',
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 20,
+                            fontSize: 21.5,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFF0037B1),
                             height: 28 / 20,
@@ -358,7 +362,10 @@ class AssignmentCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Status & Topic Badges
-            Row(
+            Wrap(
+              spacing: 8,
+              runSpacing: 4,
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 // OVERDUE badge (Node 76:2029)
                 Container(
@@ -379,7 +386,7 @@ class AssignmentCard extends StatelessWidget {
                       Text(
                         'OVERDUE',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: FontWeight.w500,
                           color: const Color(0xFF93000A),
                           letterSpacing: 0.3,
@@ -389,7 +396,6 @@ class AssignmentCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(width: 12),
                 // Topic badge (Node 76:2033)
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
@@ -400,7 +406,7 @@ class AssignmentCard extends StatelessWidget {
                   child: Text(
                     assignment.topic,
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 12,
+                      fontSize: 13,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFF4F46E5),
                       height: 16 / 12,
@@ -415,7 +421,7 @@ class AssignmentCard extends StatelessWidget {
             Text(
               assignment.title,
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 20,
+                fontSize: 21.5,
                 fontWeight: FontWeight.w600,
                 color: const Color(0xFF1A1B23),
                 height: 28 / 20,
@@ -436,7 +442,7 @@ class AssignmentCard extends StatelessWidget {
                   Text(
                     assignment.overdueDate!,
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFFBA1A1A),
                       height: 20 / 14,
@@ -465,7 +471,7 @@ class AssignmentCard extends StatelessWidget {
                 child: Text(
                   assignment.buttonText ?? 'Submit Late',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w500,
                     letterSpacing: 0.1,
                     height: 20 / 14,

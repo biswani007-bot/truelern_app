@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/router/route_paths.dart';
+import '../widgets/parent_hamburger_drawer.dart';
 
 /// Parent Notifications Screen — 100% visual match to Figma Frame `Notifications` (Node 76:1378).
 ///
@@ -37,6 +38,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      drawer: const ParentHamburgerDrawer(),
       body: SafeArea(
         bottom: false,
         child: Stack(
@@ -141,7 +143,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
               Text(
                 'Notifications',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 24,
+                  fontSize: 25.5,
                   fontWeight: FontWeight.w700,
                   color: const Color(0xFF191C1E),
                   height: 32 / 24,
@@ -212,7 +214,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                 child: Text(
                   tab,
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w500,
                     color: isSelected ? const Color(0xFFCAD3FF) : const Color(0xFF434655),
                     letterSpacing: 0.1,
@@ -324,7 +326,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                       child: Text(
                         'LIVE CLASS',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                           color: const Color(0xFF1D4ED8),
                           letterSpacing: 0.5,
@@ -335,7 +337,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                     Text(
                       'Just now',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFF434655),
                         height: 16 / 12,
@@ -350,7 +352,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                 Text(
                   'Your Public Speaking class starts\nin 15 minutes.',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.w600,
                     color: const Color(0xFF1A1B23),
                     height: 24 / 16,
@@ -363,7 +365,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                 Text(
                   'Join early to test your mic and camera\nsetup.',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF434655),
                     height: 20 / 14,
@@ -393,7 +395,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                     child: Text(
                       'Join Class',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 14,
+                        fontSize: 15,
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
                         letterSpacing: 0.1,
@@ -472,7 +474,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                       child: Text(
                         'ASSIGNMENT',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                           color: const Color(0xFFC2410C),
                           letterSpacing: 0.5,
@@ -483,7 +485,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                     Text(
                       '2 hrs ago',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFF434655),
                         height: 16 / 12,
@@ -498,7 +500,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                 Text(
                   'Your Practical Thinking\nassignment is due tomorrow.',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.w600,
                     color: const Color(0xFF1A1B23),
                     height: 24 / 16,
@@ -511,7 +513,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                 Text(
                   'Don\'t forget to submit your final project\nproposal.',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF434655),
                     height: 20 / 14,
@@ -592,7 +594,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                       child: Text(
                         'FEEDBACK',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: FontWeight.w700,
                           color: const Color(0xFF15803D),
                           letterSpacing: 0.5,
@@ -603,7 +605,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                     Text(
                       'Yesterday',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFF434655),
                         height: 16 / 12,
@@ -618,7 +620,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                 Text(
                   'Sarah left feedback on your latest\nassignment.',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.w600,
                     color: const Color(0xFF1A1B23),
                     height: 24 / 16,
@@ -631,7 +633,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                 Text(
                   '"Great progress! Just a few minor\ntweaks needed in section 2..."',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF434655),
                     height: 20 / 14,
@@ -659,7 +661,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                     child: Text(
                       'View Feedback',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 14,
+                        fontSize: 15,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFF0037B1),
                         letterSpacing: 0.1,
@@ -739,7 +741,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                         child: Text(
                           'SYSTEM',
                           style: GoogleFonts.hankenGrotesk(
-                            fontSize: 10,
+                            fontSize: 11,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFF374151),
                             letterSpacing: 0.5,
@@ -750,7 +752,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                       Text(
                         'Oct 24',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: FontWeight.w500,
                           color: const Color(0xFF434655),
                           height: 16 / 12,
@@ -765,7 +767,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                   Text(
                     'Your class schedule has changed.',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 16,
+                      fontSize: 17,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFF1A1B23),
                       height: 24 / 16,
@@ -778,7 +780,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
                   Text(
                     'The Friday workshop has been moved\nto 3:00 PM.',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF434655),
                       height: 20 / 14,
@@ -878,7 +880,7 @@ class _ParentNotificationsScreenState extends State<ParentNotificationsScreen> {
               label,
               style: GoogleFonts.hankenGrotesk(
                 color: color,
-                fontSize: 12,
+                fontSize: 13,
                 fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
                 height: 16 / 12,
               ),

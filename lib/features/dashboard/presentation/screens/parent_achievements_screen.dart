@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/router/route_paths.dart';
+import '../widgets/parent_hamburger_drawer.dart';
 
 /// Parent Achievements Screen — PURE STATIC FRONTEND ONLY.
 ///
@@ -47,6 +48,7 @@ class ParentAchievementsScreen extends StatelessWidget {
     return Scaffold(
       key: const Key('parent_achievements_screen'),
       backgroundColor: Colors.white,
+      drawer: const ParentHamburgerDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -99,7 +101,7 @@ class ParentAchievementsScreen extends StatelessWidget {
                               child: Text(
                                 'Premium Badges',
                                 style: GoogleFonts.hankenGrotesk(
-                                  fontSize: 16,
+                                  fontSize: 17,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF1A1B23),
                                   height: 24 / 16,
@@ -153,7 +155,7 @@ class ParentAchievementsScreen extends StatelessWidget {
             child: Text(
               'Achievements',
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 24,
+                fontSize: 25.5,
                 fontWeight: FontWeight.w700,
                 color: const Color(0xFF191C1E),
                 height: 32 / 24,
@@ -232,7 +234,7 @@ class ParentAchievementsScreen extends StatelessWidget {
               child: Text(
                 'TL',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 11,
+                  fontSize: 11.5,
                   fontWeight: FontWeight.w700,
                   color: const Color(0xFF0037B1),
                   letterSpacing: 0.5,
@@ -248,7 +250,7 @@ class ParentAchievementsScreen extends StatelessWidget {
           Text(
             'Alex',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 12,
+              fontSize: 13,
               fontWeight: FontWeight.w500,
               color: const Color(0xFF191C1E),
               letterSpacing: 0.5,
@@ -333,7 +335,7 @@ class ParentAchievementsScreen extends StatelessWidget {
                             Text(
                               'Your Standing',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 20,
+                                fontSize: 21.5,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFF1A1B23),
                                 height: 28 / 20,
@@ -343,7 +345,7 @@ class ParentAchievementsScreen extends StatelessWidget {
                             Text(
                               'Keep learning to climb higher!',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 14,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xFF434655),
                                 height: 20 / 14,
@@ -376,7 +378,7 @@ class ParentAchievementsScreen extends StatelessWidget {
                             Text(
                               'RANK',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 12,
+                                fontSize: 13,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xFFCAD3FF),
                                 letterSpacing: 0.6,
@@ -386,7 +388,7 @@ class ParentAchievementsScreen extends StatelessWidget {
                             Text(
                               '12',
                               style: GoogleFonts.hankenGrotesk(
-                                fontSize: 32,
+                                fontSize: 34,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xFFCAD3FF),
                                 height: 32 / 32,
@@ -407,7 +409,7 @@ class ParentAchievementsScreen extends StatelessWidget {
                       Text(
                         '450 XP',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w700,
                           color: const Color(0xFF0037B1),
                           letterSpacing: 0.1,
@@ -417,7 +419,7 @@ class ParentAchievementsScreen extends StatelessWidget {
                       Text(
                         '50 XP to Rank 11',
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: FontWeight.w500,
                           color: const Color(0xFF434655),
                           height: 16 / 12,
@@ -605,7 +607,7 @@ class ParentAchievementsScreen extends StatelessWidget {
                 title,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 14,
+                  fontSize: 15,
                   fontWeight: FontWeight.w700,
                   color: isLocked ? const Color(0xFF434655) : const Color(0xFF1A1B23),
                   letterSpacing: 0.1,
@@ -720,7 +722,7 @@ class ParentAchievementsScreen extends StatelessWidget {
             Text(
               label,
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 12,
+                fontSize: 13,
                 fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
                 color: isActive ? activeColor : inactiveColor,
                 letterSpacing: 0.5,

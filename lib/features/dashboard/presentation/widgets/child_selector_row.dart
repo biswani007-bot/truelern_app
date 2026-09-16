@@ -144,7 +144,7 @@ class _ChildCardItem extends StatelessWidget {
                   style: AppTypography.titleSmall.copyWith(
                     fontWeight: FontWeight.w600,
                     color: isActive ? const Color(0xFF0037B1) : const Color(0xFF434655),
-                    fontSize: 16,
+                    fontSize: 17,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -155,7 +155,7 @@ class _ChildCardItem extends StatelessWidget {
                       : 'Age 9',
                   style: AppTypography.bodySmall.copyWith(
                     color: const Color(0xFF434655),
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w400,
                   ),
                   maxLines: 1,
@@ -174,7 +174,7 @@ class _ChildCardItem extends StatelessWidget {
     return Text(
       child.firstName.isNotEmpty ? child.firstName[0].toUpperCase() : 'A',
       style: TextStyle(
-        fontSize: 16,
+        fontSize: 17,
         fontWeight: FontWeight.w700,
         color: isActive ? const Color(0xFF0037B1) : const Color(0xFF434655),
       ),

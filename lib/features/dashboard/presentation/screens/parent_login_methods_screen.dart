@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/router/route_paths.dart';
+import '../widgets/parent_hamburger_drawer.dart';
 
 /// Parent Login Methods Screen — PURE FRONTEND ONLY.
 ///
@@ -30,6 +32,7 @@ class ParentLoginMethodsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: const Key('parent_login_methods_screen'),
+      drawer: const ParentHamburgerDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -147,10 +150,10 @@ class ParentLoginMethodsScreen extends StatelessWidget {
           InkWell(
             borderRadius: BorderRadius.circular(9999),
             onTap: () {
-              if (Navigator.of(context).canPop()) {
-                Navigator.of(context).pop();
-              } else {
+              if (context.canPop()) {
                 context.pop();
+              } else {
+                context.go(AppRoutePaths.parentSecurityPrivacy);
               }
             },
             child: Container(
@@ -173,7 +176,7 @@ class ParentLoginMethodsScreen extends StatelessWidget {
               child: Text(
                 'Login Methods',
                 style: GoogleFonts.hankenGrotesk(
-                  fontSize: 24,
+                  fontSize: 25.5,
                   fontWeight: FontWeight.w700,
                   height: 32 / 24,
                   color: const Color(0xFF191C1E),
@@ -272,7 +275,7 @@ class ParentLoginMethodsScreen extends StatelessWidget {
                 Text(
                   title,
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.w600,
                     height: 24 / 16,
                     color: const Color(0xFF1A1B23),
@@ -281,7 +284,7 @@ class ParentLoginMethodsScreen extends StatelessWidget {
                 Text(
                   subtitle,
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w400,
                     height: 20 / 14,
                     color: const Color(0xFF434655),
@@ -305,7 +308,7 @@ class ParentLoginMethodsScreen extends StatelessWidget {
             child: Text(
               badgeText,
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 12,
+                fontSize: 13,
                 fontWeight: FontWeight.w600,
                 height: 16 / 12,
                 color: badgeTextColor,
@@ -338,7 +341,7 @@ class ParentLoginMethodsScreen extends StatelessWidget {
             'TrueLern uses secure verification. No passwords\nrequired.',
             textAlign: TextAlign.center,
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 14,
+              fontSize: 15,
               fontWeight: FontWeight.w400,
               height: 20 / 14,
               color: const Color(0xFF747686),

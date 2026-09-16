@@ -249,7 +249,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
           Text(
             'Assignment',
             style: GoogleFonts.hankenGrotesk(
-              fontSize: 24,
+              fontSize: 25.5,
               fontWeight: FontWeight.w700,
               color: const Color(0xFF191C1E),
               height: 32 / 24,
@@ -301,7 +301,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                   child: Text(
                     topic,
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 12,
+                      fontSize: 13,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFFA855F7),
                       height: 16 / 12,
@@ -314,7 +314,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                 Text(
                   title,
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 28,
+                    fontSize: 30,
                     fontWeight: FontWeight.w700,
                     color: const Color(0xFF1A1B23),
                     height: 36 / 28,
@@ -326,7 +326,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                 Text(
                   dueDate,
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF747686),
                     height: 20 / 14,
@@ -372,7 +372,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                 child: Text(
                   'Upload Submission',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 20,
+                    fontSize: 21.5,
                     fontWeight: FontWeight.w600,
                     color: const Color(0xFF1A1B23),
                     height: 28 / 20,
@@ -390,7 +390,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                 child: Text(
                   'Not Started',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 12,
+                    fontSize: 13,
                     fontWeight: FontWeight.w500,
                     color: const Color(0xFF747686),
                     height: 16 / 12,
@@ -435,7 +435,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                     'Tap to upload file',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 16,
+                      fontSize: 17,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFF1A1B23),
                       height: 24 / 16,
@@ -448,7 +448,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                     'Supported formats: PDF, DOCX, JPG\n(Max 10MB)',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF747686),
                       height: 20 / 14,
@@ -500,7 +500,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                 child: Text(
                   'Upload Submission',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 20,
+                    fontSize: 21.5,
                     fontWeight: FontWeight.w600,
                     color: const Color(0xFF1A1B23),
                     height: 28 / 20,
@@ -528,7 +528,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                     Text(
                       'Draft Saved',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFF4F46E5),
                         height: 16 / 12,
@@ -584,7 +584,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                         _currentFileName,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 16,
+                          fontSize: 17,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFF1A1B23),
                           height: 24 / 16,
@@ -593,7 +593,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                       Text(
                         _currentFileSize,
                         style: GoogleFonts.hankenGrotesk(
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xFF747686),
                           height: 20 / 14,
@@ -639,7 +639,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                     child: Text(
                       'Replace',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFF0037B1),
                         height: 24 / 16,
@@ -669,7 +669,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                     child: Text(
                       'Submit Now',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                         height: 24 / 16,
@@ -725,7 +725,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                 child: Text(
                   'Upload Submission',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 20,
+                    fontSize: 21.5,
                     fontWeight: FontWeight.w600,
                     color: const Color(0xFF1A1B23),
                     height: 28 / 20,
@@ -753,7 +753,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                     Text(
                       'Submitting...',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFF22D3EE),
                         height: 16 / 12,
@@ -798,7 +798,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                 Text(
                   'Uploading file...',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.w600,
                     color: const Color(0xFF1A1B23),
                     height: 24 / 16,
@@ -834,7 +834,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                 Text(
                   '$pct% complete',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w400,
                     color: const Color(0xFF747686),
                     height: 20 / 14,
@@ -896,7 +896,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                 child: Text(
                   'Submission Status',
                   style: GoogleFonts.hankenGrotesk(
-                    fontSize: 20,
+                    fontSize: 21.5,
                     fontWeight: FontWeight.w600,
                     color: const Color(0xFF1A1B23),
                     height: 28 / 20,
@@ -931,7 +931,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                     Text(
                       'Submitted',
                       style: GoogleFonts.hankenGrotesk(
-                        fontSize: 12,
+                        fontSize: 13,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                         height: 16 / 12,
@@ -971,7 +971,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
               'Great job!',
               textAlign: TextAlign.center,
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: FontWeight.w600,
                 color: const Color(0xFF1A1B23),
                 height: 24 / 16,
@@ -986,7 +986,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
               'Your assignment was submitted on time at 10:42\nAM.',
               textAlign: TextAlign.center,
               style: GoogleFonts.hankenGrotesk(
-                fontSize: 14,
+                fontSize: 15,
                 fontWeight: FontWeight.w400,
                 color: const Color(0xFF747686),
                 height: 20 / 14,
@@ -1016,29 +1016,30 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/icons/submission_file_blue_small.svg',
-                      width: 16,
-                      height: 20,
-                      colorFilter: const ColorFilter.mode(Color(0xFF0037B1), BlendMode.srcIn),
-                    ),
-                    const SizedBox(width: 8),
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 180),
-                      child: Text(
-                        'final_project_v2.pdf',
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.hankenGrotesk(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xFF1A1B23),
-                          height: 20 / 14,
+                Expanded(
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icons/submission_file_blue_small.svg',
+                        width: 16,
+                        height: 20,
+                        colorFilter: const ColorFilter.mode(Color(0xFF0037B1), BlendMode.srcIn),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'final_project_v2.pdf',
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.hankenGrotesk(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xFF1A1B23),
+                            height: 20 / 14,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 TextButton(
                   key: const Key('view_submitted_file_button'),
@@ -1058,7 +1059,7 @@ class _AssignmentSubmissionScreenState extends State<AssignmentSubmissionScreen>
                   child: Text(
                     'View',
                     style: GoogleFonts.hankenGrotesk(
-                      fontSize: 12,
+                      fontSize: 13,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF0037B1),
                       height: 16 / 12,
